@@ -35,6 +35,5 @@ class RootPage extends StatelessWidget {
 
   Future<bool> checkTokenExists() async {
     return await TokenServies().isTokenExistOnCache();
-    //return false;
   }
 }

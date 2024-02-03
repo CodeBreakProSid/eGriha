@@ -8,6 +8,10 @@ const BG_THEME_COLOR = Colors.blue;
 Color ICON_COLOR = Colors.orange.shade700;
 Color SHADOW_COLOR = const Color.fromRGBO(226, 130, 75, 0.729);
 Color LB_COLOR = const Color.fromARGB(255, 26, 108, 202);
+//APP DRAWER
+const LIST_TILE_TEXT_COLOR = Color.fromARGB(255, 85, 83, 83);
+const APP_DRAWER_BACKGROUND_COLOR = Colors.white;
+const APP_DRAWER_HEADER_COLOR = Color(0xFF0D47A1);
 
 //Padding used in App
 //Login page
@@ -38,4 +42,16 @@ TextStyle LB_TEXT_STYLE = const TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.bold,
   fontSize: 15,
+);
+
+//Padding
+//App Drawer Icon
+const EdgeInsets LIST_ICON_TEXT_PADDING = EdgeInsets.only(left: 20);
+
+//Text Style
+//App drawer
+TextStyle APP_DRAWER_TEXT_STYLE = const TextStyle(
+  color: LIST_TILE_TEXT_COLOR,
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
 );
