@@ -43,17 +43,6 @@ class LoginButtonWidget extends StatelessWidget {
             );
           }
         }
-
-        // try {
-        //   Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => ScreenMainPage(),
-        //     ),
-        //   );
-        // } catch (e) {
-        //   print("Navigation Error: $e");
-        // }
       },
       height: LB_HEIGHT,
       color: LB_COLOR,

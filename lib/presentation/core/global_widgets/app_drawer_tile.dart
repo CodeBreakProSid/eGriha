@@ -1,6 +1,8 @@
 import 'package:egraha_app/presentation/core/themes/theme_data.dart';
 import 'package:flutter/material.dart';
 
+import '../global_widgets_fun/app_drawer_navigation.dart';
+
 class AppDrawerTile extends StatelessWidget {
   final IconData icon;
   final String tileName;
@@ -32,7 +34,7 @@ class AppDrawerTile extends StatelessWidget {
         ),
       ),
       onTap: () {
-        // appDrawerNavigation(context, tileKey);
+        appDrawerNavigation(context, tileKey);
       },
     );
   }

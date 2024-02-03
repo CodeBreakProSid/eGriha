@@ -1,5 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:flutter/material.dart';
+
+ValueNotifier<int> indexChangeNotifier = ValueNotifier(1);
+
 Map<String, int> APP_TILE_VALUE = {
   'home': 1,
   'profile': 2,

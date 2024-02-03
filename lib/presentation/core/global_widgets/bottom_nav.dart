@@ -1,10 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-ValueNotifier<int> indexChangeNotifier = ValueNotifier(1);
+import '../const/ui_const.dart';
+
+//ValueNotifier<int> indexChangeNotifier = ValueNotifier(1);
 
 class BottomNavigationWidget extends StatelessWidget {
-  const BottomNavigationWidget({super.key});
+  const BottomNavigationWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
