@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+import '../../../application/login/login_bloc.dart';
 import '../../core/themes/theme_data.dart';
 
 class UsernameWidget extends StatelessWidget {
-  const UsernameWidget({
+  UsernameWidget({
     Key? key,
-    //required this.state,
+    required this.state,
   }) : super(key: key);
 
-  //LoginState state;
+  LoginState state;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class UsernameWidget extends StatelessWidget {
           errorText: 'Username should be more than 4 numbers!',
         ),
       ]),
-      //initialValue: state.userName,
+      initialValue: state.userName,
     );
   }
 }

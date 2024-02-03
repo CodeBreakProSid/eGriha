@@ -1,15 +1,25 @@
 import 'package:egraha_app/presentation/main_page/screen_main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../../../application/login/login_bloc.dart';
 import '../../core/themes/theme_data.dart';
+import 'login_button_widget.dart';
 import 'password_widget.dart';
 import 'rememberMe_widget.dart';
 import 'username_widget.dart';
 
 class LoginFieldWidget extends StatelessWidget {
-  const LoginFieldWidget({
+  LoginFieldWidget({
     super.key,
+    required this.state,
+    required this.loginFormKey,
+    required this.context,
   });
+
+  LoginState state;
+  BuildContext context;
+  GlobalKey<FormBuilderState> loginFormKey;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +54,10 @@ class LoginFieldWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const Column(
+                  child: Column(
                     children: [
-                      UsernameWidget(),
-                      PasswordWidget(),
+                      UsernameWidget(state: state),
+                      PasswordWidget(state: state),
                     ],
                   ),
                 ),
@@ -60,28 +70,10 @@ class LoginFieldWidget extends StatelessWidget {
             //Screen height for seperation
             const SizedBox(height: 20),
             //Login button widget
-            MaterialButton(
-              onPressed: () {
-                try {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ScreenMainPage(),
-                    ),
-                  );
-                } catch (e) {
-                  print("Navigation Error: $e");
-                }
-              },
-              height: LB_HEIGHT,
-              color: LB_COLOR,
-              shape: LB_BORDER,
-              child: Center(
-                child: Text(
-                  "Login",
-                  style: LB_TEXT_STYLE,
-                ),
-              ),
+            LoginButtonWidget(
+              loginFormKey: loginFormKey,
+              state: state,
+              context: context,
             ),
           ],
         ),

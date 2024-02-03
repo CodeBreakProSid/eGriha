@@ -7,6 +7,7 @@ import '../../application/login/login_bloc.dart';
 import '../core/global_widgets_fun/snackbar.dart';
 import '../core/themes/theme_data.dart';
 import '../home/screen_home.dart';
+import '../main_page/screen_main_page.dart';
 import 'widgets/keltron_logo_widget.dart';
 import 'widgets/kshb_logo_widget.dart';
 import 'widgets/login_field_widget.dart';
@@ -35,7 +36,7 @@ class ScreenLogin extends StatelessWidget {
           //
           //Successful login route to home page
           Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const ScreenHome()));
+              MaterialPageRoute(builder: (context) => ScreenMainPage()));
         } else if (state.hasError) {
           //
           //Genrating a snackbar error message
@@ -51,7 +52,7 @@ class ScreenLogin extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
-            backgroundColor: Colors.white,
+            // backgroundColor: Colors.white,
             body: FormBuilder(
               key: loginFormKey,
               child: Container(
@@ -68,7 +69,7 @@ class ScreenLogin extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: const Column(
+                child: Column(
                   children: [
                     Padding(
                       padding: LOGIN_PAGE_PADDING20,
@@ -78,19 +79,23 @@ class ScreenLogin extends StatelessWidget {
                           //Keep height between safe area
                           L_HEIGHT20,
                           //KSHB Logo widgets
-                          KshbLogoWidget(),
+                          const KshbLogoWidget(),
                           //Screen height for seperation
                           L_HEIGHT40,
                           //Welcome text
-                          WelcomeWidget(),
+                          const WelcomeWidget(),
                           //Screen height for seperation
                           L_HEIGHT10,
                           //Login credential container
-                          LoginFieldWidget(),
+                          LoginFieldWidget(
+                            state: state,
+                            loginFormKey: loginFormKey,
+                            context: context,
+                          ),
                           //Screen height for seperation
                           L_HEIGHT100,
                           //Keltron logo widget
-                          KeltronLogoWidget(),
+                          const KeltronLogoWidget(),
                         ],
                       ),
                     ),

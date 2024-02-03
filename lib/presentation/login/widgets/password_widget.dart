@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+import '../../../application/login/login_bloc.dart';
 import '../../core/themes/theme_data.dart';
 import '../screen_login.dart';
 
 class PasswordWidget extends StatelessWidget {
-  const PasswordWidget({
+  PasswordWidget({
     Key? key,
-    //required this.state,
+    required this.state,
   }) : super(key: key);
 
-  //LoginState state;
+  LoginState state;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class PasswordWidget extends StatelessWidget {
           validator: FormBuilderValidators.required(
             errorText: 'Password required',
           ),
-          //initialValue: state.password,
+          initialValue: state.password,
         );
       },
     );

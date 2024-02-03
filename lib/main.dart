@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'application/login/login_bloc.dart';
 import 'domain/core/dep_injection/injectable.dart';
-import 'presentation/login/screen_login.dart';
+import 'presentation/root/root_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const ScreenLogin(),
+        home: const RootPage(),
       ),
     );
   }
