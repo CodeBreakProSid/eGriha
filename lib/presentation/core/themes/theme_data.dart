@@ -11,7 +11,7 @@ Color LB_COLOR = const Color.fromARGB(255, 26, 108, 202);
 //APP DRAWER
 const LIST_TILE_TEXT_COLOR = Color.fromARGB(255, 85, 83, 83);
 const APP_DRAWER_BACKGROUND_COLOR = Colors.white;
-const APP_DRAWER_HEADER_COLOR = Color(0xFF0D47A1);
+const APP_DRAWER_HEADER_COLOR = Colors.orangeAccent;
 
 //Padding used in App
 //Login page
@@ -53,5 +53,11 @@ const EdgeInsets LIST_ICON_TEXT_PADDING = EdgeInsets.only(left: 20);
 TextStyle APP_DRAWER_TEXT_STYLE = const TextStyle(
   color: LIST_TILE_TEXT_COLOR,
   fontSize: 16,
+  fontWeight: FontWeight.bold,
+);
+//App Bar Styles
+TextStyle APP_BAR_TEXT_STYLE = const TextStyle(
+  fontSize: 26,
+  color: Colors.black,
   fontWeight: FontWeight.bold,
 );

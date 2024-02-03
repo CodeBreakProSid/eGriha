@@ -1,4 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+
+import '../core/global_widgets/app_drawer.dart';
+import '../core/global_widgets/appbar_global.dart';
+import '../core/global_widgets/appbar_icon_widget.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -6,23 +12,16 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: CurvedNavigationBar(
-      //   index: 1,
-      //   backgroundColor: Colors.white,
-      //   color: Colors.orangeAccent,
-      //   buttonBackgroundColor: Colors.orangeAccent,
-      //   animationCurve: Curves.easeOut,
-      //   animationDuration: const Duration(milliseconds: 400),
-      //   height: 60.0,
-      //   items: const <Widget>[
-      //     Icon(Icons.person, size: 30),
-      //     Icon(Icons.home, size: 30),
-      //     Icon(Icons.list, size: 30),
-      //   ],
-      //   onTap: (index) {
-      //     //Handle button tap
-      //   },
-      // ),
+      drawer: const AppDrawer(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60.0),
+        child: AppBarGlobal(
+          appBarTitle: 'Home',
+          widgets: AppBarIconWidgetList(
+            iconData: Icons.notifications,
+          ),
+        ),
+      ),
       body: Container(
         color: Colors.white,
         child: const Center(

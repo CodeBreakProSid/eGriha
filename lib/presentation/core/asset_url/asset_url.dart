@@ -2,5 +2,5 @@
 
 class AssetUrls {
   static const String LOGO = 'assets/logo_pic.png';
-  static const String KSHB_LOGO = 'assets/kshb_logo.ico';
+  static const String KSHB_LOGO = 'assets/kshb_logo.png';
 }

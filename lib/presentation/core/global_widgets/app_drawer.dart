@@ -25,7 +25,7 @@ class AppDrawer extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black,
+                      Colors.white,
                       APP_DRAWER_HEADER_COLOR,
                     ],
                   ),
@@ -47,13 +47,13 @@ class AppDrawer extends StatelessWidget {
                     Text(
                       'Akshay Ashok A',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'Mavelikkara',
+                      'Keltron',
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 12,
@@ -77,19 +77,13 @@ class AppDrawer extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               AppDrawerTile(
-                tileName: 'Submitted Duties',
-                icon: Icons.task,
+                tileName: 'Projects',
+                icon: Icons.home_work_outlined,
                 tileKey: APP_TILE_VALUE['duties']!,
               ),
               const SizedBox(height: 10),
               AppDrawerTile(
-                tileName: 'App Log',
-                icon: Icons.error,
-                tileKey: APP_TILE_VALUE['log']!,
-              ),
-              const SizedBox(height: 10),
-              AppDrawerTile(
-                tileName: 'User Manual',
+                tileName: 'Manual',
                 icon: Icons.book,
                 tileKey: APP_TILE_VALUE['manual']!,
               ),
@@ -134,7 +128,7 @@ class AppDrawer extends StatelessWidget {
                       height: 2,
                     ),
                     const Text(
-                      'KERALA POLICE',
+                      'KERALA STATE HOUSING BOARD',
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
