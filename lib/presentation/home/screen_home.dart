@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../core/global_widgets/app_drawer.dart';
 import '../core/global_widgets/appbar_global.dart';
 import '../core/global_widgets/appbar_icon_widget.dart';
-import '../core/global_widgets/bottom_nav.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../domain/login/model/login_response.dart';
+import '../../../infrastructure/core/module_services/officer_services.dart';
 import '../asset_url/asset_url.dart';
 import '../const/ui_const.dart';
 import '../themes/theme_data.dart';
@@ -19,49 +21,64 @@ class AppDrawer extends StatelessWidget {
             shrinkWrap: true,
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.white,
-                      APP_DRAWER_HEADER_COLOR,
-                    ],
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      radius: 30,
-                      child: Icon(
-                        Icons.person,
-                        size: 40,
+              FutureBuilder<User?>(
+                future: OfficerService().getOfficer(),
+                builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator(
+                      strokeWidth: 2,
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    final officer = snapshot.data!;
+                    return DrawerHeader(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white,
+                            APP_DRAWER_HEADER_COLOR,
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Akshay Ashok A',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CircleAvatar(
+                            radius: 40,
+                            child: officer.thumbnails != null
+                                ? CircleAvatar(
+                                    radius: 40,
+                                    backgroundImage:
+                                        NetworkImage(officer.thumbnails!))
+                                : const Icon(Icons.person),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            officer.fullName ?? 'Officer Name',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            officer.address ?? 'Address',
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      'Keltron',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+                    );
+                  }
+                },
               ),
               const SizedBox(height: 20),
               AppDrawerTile(
@@ -101,16 +118,6 @@ class AppDrawer extends StatelessWidget {
               child: SizedBox(
                 width: 350,
                 height: 210,
-                // decoration: BoxDecoration(
-                //   gradient: LinearGradient(
-                //     begin: Alignment.topCenter,
-                //     end: Alignment.bottomCenter,
-                //     colors: [
-                //       Colors.black,
-                //       APP_DRAWER_HEADER_COLOR.withAlpha(200),
-                //     ],
-                //   ),
-                // ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

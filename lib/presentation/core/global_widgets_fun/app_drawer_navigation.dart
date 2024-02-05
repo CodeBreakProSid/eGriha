@@ -3,11 +3,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../infrastructure/core/module_services/auth_services.dart';
-import '../../home/screen_home.dart';
 import '../../login/screen_login.dart';
 import '../../main_page/screen_main_page.dart';
-import '../../profile/screen_profile.dart';
-import '../../project/screen_project.dart';
 import '../const/ui_const.dart';
 
 Future<void> appDrawerNavigation(BuildContext context, int tileValue) async {
