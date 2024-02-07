@@ -1,11 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 
+import '../../../application/profile/profile_bloc.dart';
 import '../../core/asset_url/asset_url.dart';
 
 class ProfilePicWidget extends StatelessWidget {
-  const ProfilePicWidget({
-    super.key,
-  });
+  ProfileState state;
+  ProfilePicWidget({
+    Key? key,
+    required this.state,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +36,21 @@ class ProfilePicWidget extends StatelessWidget {
                 ),
               ),
             ),
-            child: const Column(
+            child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(25.0),
+                  padding: const EdgeInsets.all(25.0),
                   child: CircleAvatar(
                     radius: 80,
-                    backgroundImage: AssetImage(
-                      AssetUrls.LOGO,
+                    // backgroundImage: AssetImage(
+                    //   AssetUrls.LOGO,
+                    // ),
+                    backgroundImage: NetworkImage(
+                      state.officerProfile?.profilePicture as String,
                     ),
                   ),
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(

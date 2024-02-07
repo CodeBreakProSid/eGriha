@@ -1,3 +1,4 @@
+import 'package:egraha_app/application/profile/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (BuildContext context) => getIt<LoginBloc>()),
+        BlocProvider(create: (BuildContext context) => getIt<ProfileBloc>()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

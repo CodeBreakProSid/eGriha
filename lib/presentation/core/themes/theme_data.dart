@@ -24,7 +24,6 @@ const double LOGO_WIDTH = 130;
 const double LB_HEIGHT = 50;
 
 //Screen Spacing
-//Login Page
 const L_HEIGHT5 = SizedBox(height: 5);
 const L_HEIGHT10 = SizedBox(height: 10);
 const L_HEIGHT20 = SizedBox(height: 20);

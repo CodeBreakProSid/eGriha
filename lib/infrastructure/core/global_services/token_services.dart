@@ -12,4 +12,16 @@ class TokenServies {
   Future<void> writeTokenToCache(String token) async {
     await CacheServices().writeToCache(CacheConst.KEY, token);
   }
+
+  Future<String?> readTokenFromCache() async {
+    final String? tempToken =
+        await CacheServices().readFromCache(CacheConst.KEY);
+
+    if (tempToken != null) {
+      //String token = 'Token $tempToken';
+      return tempToken;
+    }
+
+    return null;
+  }
 }

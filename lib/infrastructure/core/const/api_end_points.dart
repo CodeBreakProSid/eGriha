@@ -16,5 +16,6 @@ class ApiEndPoints {
   static const String DELETE_TOKEN = "accounts/logout/";
 
   // Profile Module API calls*
+  static const String OFFICER_PROFILE = "/accounts/api/user_profile/";
   static const String UPDATE_PROFILE = "/accounts/api/user_profile/";
 }

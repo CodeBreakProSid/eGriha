@@ -29,9 +29,24 @@ class DioServices {
     );
   }
 
-  Future<Response> get(String url) async {
+  Future<Response> get(
+    String url, {
+    final FormData? data,
+    final Map<String, dynamic>? queryParameters,
+    final String? accessToken,
+  }) async {
     try {
-      final response = await _dio.get(url);
+      final authToken = accessToken ?? '';
+      final response = await _dio.get(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: Options(
+          headers: {
+            'Authorization': authToken,
+          },
+        ),
+      );
       return response;
     } catch (error) {
       throw Exception('Failed to perform GET request: $error');

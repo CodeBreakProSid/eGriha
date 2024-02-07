@@ -8,4 +8,5 @@ class CacheConst {
   static const APP_PASSWORD = 'app_password';
 
   static const KSHB_OFFICER = 'officer';
+  static const KSHB_OFFICER_PROFILE = 'officerProfile';
 }

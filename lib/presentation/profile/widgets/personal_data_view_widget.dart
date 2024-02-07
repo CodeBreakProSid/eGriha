@@ -1,9 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 
+import '../../../application/profile/profile_bloc.dart';
+
 class PersonalDataViewWidget extends StatelessWidget {
-  const PersonalDataViewWidget({
-    super.key,
-  });
+  ProfileState state;
+  PersonalDataViewWidget({
+    Key? key,
+    required this.state,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +52,9 @@ class PersonalDataViewWidget extends StatelessWidget {
                               fontSize: 15,
                             ),
                           ),
-                          const Text(
-                            'Akshay Ashok A',
-                            style: TextStyle(
+                          Text(
+                            state.officerProfile!.fullName as String,
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -95,15 +100,15 @@ class PersonalDataViewWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Name',
+                            'Gender',
                             style: TextStyle(
                               color: Colors.grey.shade600,
                               fontSize: 15,
                             ),
                           ),
-                          const Text(
-                            'Male',
-                            style: TextStyle(
+                          Text(
+                            '${state.officerProfile!.gender}',
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -155,9 +160,9 @@ class PersonalDataViewWidget extends StatelessWidget {
                               fontSize: 15,
                             ),
                           ),
-                          const Text(
-                            '9809521623',
-                            style: TextStyle(
+                          Text(
+                            state.officerProfile!.phoneNumber as String,
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -209,9 +214,9 @@ class PersonalDataViewWidget extends StatelessWidget {
                               fontSize: 15,
                             ),
                           ),
-                          const Text(
-                            'akshayashok38@gmail.com',
-                            style: TextStyle(
+                          Text(
+                            state.officerProfile!.email as String,
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -263,9 +268,9 @@ class PersonalDataViewWidget extends StatelessWidget {
                               fontSize: 15,
                             ),
                           ),
-                          const Text(
-                            'Keltron\nVellayambalam\nThiruvananthapuram',
-                            style: TextStyle(
+                          Text(
+                            state.officerProfile!.address as String,
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,

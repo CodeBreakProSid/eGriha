@@ -1,9 +1,12 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable, file_names
 import 'package:flutter/material.dart';
+
+import '../../../application/profile/profile_bloc.dart';
 
 class PersonalInfoWidget extends StatelessWidget {
   const PersonalInfoWidget({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
