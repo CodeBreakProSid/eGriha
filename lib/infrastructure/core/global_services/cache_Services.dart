@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:egraha_app/infrastructure/core/global_services/box_services.dart';
 
 class CacheServices {

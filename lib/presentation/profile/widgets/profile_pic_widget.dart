@@ -40,15 +40,19 @@ class ProfilePicWidget extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(25.0),
-                  child: CircleAvatar(
-                    radius: 80,
-                    // backgroundImage: AssetImage(
-                    //   AssetUrls.LOGO,
-                    // ),
-                    backgroundImage: NetworkImage(
-                      state.officerProfile?.profilePicture as String,
-                    ),
-                  ),
+                  child: (state.officerProfile?.profilePicture == null ||
+                          state.officerProfile?.profilePicture == '')
+                      ? const CircleAvatar(
+                          radius: 80,
+                          backgroundImage: AssetImage(
+                            AssetUrls.LOGO,
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: 80,
+                          backgroundImage: NetworkImage(
+                              state.officerProfile!.profilePicture as String),
+                        ),
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,

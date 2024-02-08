@@ -22,6 +22,8 @@ class Profile {
   String? username;
   @JsonKey(name: 'thumbnails')
   String? thumbnails;
+  @JsonKey(name: 'gender_name')
+  String? genderName;
 
   Profile({
     this.id,
@@ -33,6 +35,7 @@ class Profile {
     this.profilePicture,
     this.username,
     this.thumbnails,
+    this.genderName,
   });
 
   factory Profile.fromJson(Map<String, dynamic> json) {
