@@ -50,8 +50,31 @@ class ProfilePicWidget extends StatelessWidget {
                         )
                       : CircleAvatar(
                           radius: 80,
-                          backgroundImage: NetworkImage(
-                              state.officerProfile!.profilePicture as String),
+                          child: ClipOval(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            child: Image.network(
+                              width: 200,
+                              height: 200,
+                              state.officerProfile!.profilePicture as String,
+                              fit: BoxFit.cover,
+                              loadingBuilder: (BuildContext _, Widget child,
+                                  ImageChunkEvent? progres) {
+                                if (progres == null) {
+                                  return child;
+                                } else {
+                                  return const Center(
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                    ),
+                                  );
+                                }
+                              },
+                              errorBuilder: (BuildContext _, Object obj,
+                                  StackTrace? trace) {
+                                return const Center(child: Icon(Icons.wifi));
+                              },
+                            ),
+                          ),
                         ),
                 ),
                 const Row(
