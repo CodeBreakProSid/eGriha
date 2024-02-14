@@ -1,19 +1,23 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../../../application/profile/profile_bloc.dart';
 import '../../core/const/ui_const.dart';
 import 'profile_edit_bottomsheet_widget.dart';
 
 class PersonalDataViewWidget extends StatelessWidget {
-  ProfileState state;
   PersonalDataViewWidget({
     Key? key,
     required this.state,
   }) : super(key: key);
 
+  ProfileState state;
+
   @override
   Widget build(BuildContext context) {
+    //Creating global key for login form
+    final profileFormKey = GlobalKey<FormBuilderState>();
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: Container(
@@ -42,6 +46,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                         titleMessage: 'Enter your name',
                         fieldType: PROFILE_FIELD['name'] as int,
                         state: state,
+                        profileFormKey: profileFormKey,
                       );
                     },
                   );
@@ -104,6 +109,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                                   titleMessage: 'Enter your name',
                                   fieldType: PROFILE_FIELD['name'] as int,
                                   state: state,
+                                  profileFormKey: profileFormKey,
                                 );
                               },
                             );
@@ -134,6 +140,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                         titleMessage: 'Enter your gender',
                         fieldType: PROFILE_FIELD['gender'] as int,
                         state: state,
+                        profileFormKey: profileFormKey,
                       );
                     },
                   );
@@ -196,6 +203,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                                   titleMessage: 'Enter your gender',
                                   fieldType: PROFILE_FIELD['gender'] as int,
                                   state: state,
+                                  profileFormKey: profileFormKey,
                                 );
                               },
                             );
@@ -224,6 +232,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                         titleMessage: 'Enter your phone number',
                         fieldType: PROFILE_FIELD['phone'] as int,
                         state: state,
+                        profileFormKey: profileFormKey,
                       );
                     },
                   );
@@ -286,6 +295,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                                   titleMessage: 'Enter your phone number',
                                   fieldType: PROFILE_FIELD['phone'] as int,
                                   state: state,
+                                  profileFormKey: profileFormKey,
                                 );
                               },
                             );
@@ -314,6 +324,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                         titleMessage: 'Enter your email',
                         fieldType: PROFILE_FIELD['email'] as int,
                         state: state,
+                        profileFormKey: profileFormKey,
                       );
                     },
                   );
@@ -376,6 +387,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                                   titleMessage: 'Enter your email',
                                   fieldType: PROFILE_FIELD['email'] as int,
                                   state: state,
+                                  profileFormKey: profileFormKey,
                                 );
                               },
                             );
@@ -404,6 +416,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                         titleMessage: 'Enter your address',
                         fieldType: PROFILE_FIELD['address'] as int,
                         state: state,
+                        profileFormKey: profileFormKey,
                       );
                     },
                   );
@@ -466,6 +479,7 @@ class PersonalDataViewWidget extends StatelessWidget {
                                   titleMessage: 'Enter your address',
                                   fieldType: PROFILE_FIELD['address'] as int,
                                   state: state,
+                                  profileFormKey: profileFormKey,
                                 );
                               },
                             );

@@ -29,7 +29,8 @@ class OfficerProfileServices {
   }
 
   Future<void> saveOfficerProfile(
-      Map<String, dynamic>? savableOfficerProfile) async {
+    Map<String, dynamic>? savableOfficerProfile,
+  ) async {
     if (savableOfficerProfile != null) {
       await CacheServices()
           .writeToCache(CacheConst.KSHB_OFFICER_PROFILE, savableOfficerProfile);

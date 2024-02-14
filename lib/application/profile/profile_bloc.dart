@@ -48,5 +48,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       //Emit the state for UI chages
       emit(tempResponse);
     });
+
+    on<_ProfileUpdateOnclick>(
+      (event, emit) async {
+        emit(
+          ProfileState(
+            stateID: DateTime.now().microsecondsSinceEpoch.toString(),
+            officerProfile: null,
+            isLoading: true,
+            hasError: false,
+          ),
+        );
+
+        await profileService.updateProfile(
+          officerProfileData: event.profileData,
+          fieldType: event.fieldType,
+        );
+      },
+    );
   }
 }

@@ -20,6 +20,7 @@ Map<String, int> PROFILE_FIELD = {
   'phone': 3,
   'email': 4,
   'address': 5,
+  'photo': 6,
 };
 
 final Map<String, int> GENDER_TYPE = {

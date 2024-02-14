@@ -19,32 +19,39 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileScreenData,
+    required TResult Function(dynamic profileData, int fieldType)
+        profileUpdateOnclick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getProfileScreenData,
+    TResult? Function(dynamic profileData, int fieldType)? profileUpdateOnclick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileScreenData,
+    TResult Function(dynamic profileData, int fieldType)? profileUpdateOnclick,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProfileScreenData value) getProfileScreenData,
+    required TResult Function(_ProfileUpdateOnclick value) profileUpdateOnclick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetProfileScreenData value)? getProfileScreenData,
+    TResult? Function(_ProfileUpdateOnclick value)? profileUpdateOnclick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileScreenData value)? getProfileScreenData,
+    TResult Function(_ProfileUpdateOnclick value)? profileUpdateOnclick,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +115,8 @@ class _$GetProfileScreenDataImpl implements _GetProfileScreenData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileScreenData,
+    required TResult Function(dynamic profileData, int fieldType)
+        profileUpdateOnclick,
   }) {
     return getProfileScreenData();
   }
@@ -116,6 +125,7 @@ class _$GetProfileScreenDataImpl implements _GetProfileScreenData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getProfileScreenData,
+    TResult? Function(dynamic profileData, int fieldType)? profileUpdateOnclick,
   }) {
     return getProfileScreenData?.call();
   }
@@ -124,6 +134,7 @@ class _$GetProfileScreenDataImpl implements _GetProfileScreenData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileScreenData,
+    TResult Function(dynamic profileData, int fieldType)? profileUpdateOnclick,
     required TResult orElse(),
   }) {
     if (getProfileScreenData != null) {
@@ -136,6 +147,7 @@ class _$GetProfileScreenDataImpl implements _GetProfileScreenData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProfileScreenData value) getProfileScreenData,
+    required TResult Function(_ProfileUpdateOnclick value) profileUpdateOnclick,
   }) {
     return getProfileScreenData(this);
   }
@@ -144,6 +156,7 @@ class _$GetProfileScreenDataImpl implements _GetProfileScreenData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetProfileScreenData value)? getProfileScreenData,
+    TResult? Function(_ProfileUpdateOnclick value)? profileUpdateOnclick,
   }) {
     return getProfileScreenData?.call(this);
   }
@@ -152,6 +165,7 @@ class _$GetProfileScreenDataImpl implements _GetProfileScreenData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileScreenData value)? getProfileScreenData,
+    TResult Function(_ProfileUpdateOnclick value)? profileUpdateOnclick,
     required TResult orElse(),
   }) {
     if (getProfileScreenData != null) {
@@ -163,6 +177,157 @@ class _$GetProfileScreenDataImpl implements _GetProfileScreenData {
 
 abstract class _GetProfileScreenData implements ProfileEvent {
   const factory _GetProfileScreenData() = _$GetProfileScreenDataImpl;
+}
+
+/// @nodoc
+abstract class _$$ProfileUpdateOnclickImplCopyWith<$Res> {
+  factory _$$ProfileUpdateOnclickImplCopyWith(_$ProfileUpdateOnclickImpl value,
+          $Res Function(_$ProfileUpdateOnclickImpl) then) =
+      __$$ProfileUpdateOnclickImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({dynamic profileData, int fieldType});
+}
+
+/// @nodoc
+class __$$ProfileUpdateOnclickImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$ProfileUpdateOnclickImpl>
+    implements _$$ProfileUpdateOnclickImplCopyWith<$Res> {
+  __$$ProfileUpdateOnclickImplCopyWithImpl(_$ProfileUpdateOnclickImpl _value,
+      $Res Function(_$ProfileUpdateOnclickImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? profileData = freezed,
+    Object? fieldType = null,
+  }) {
+    return _then(_$ProfileUpdateOnclickImpl(
+      profileData: freezed == profileData
+          ? _value.profileData
+          : profileData // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      fieldType: null == fieldType
+          ? _value.fieldType
+          : fieldType // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ProfileUpdateOnclickImpl implements _ProfileUpdateOnclick {
+  const _$ProfileUpdateOnclickImpl(
+      {required this.profileData, required this.fieldType});
+
+  @override
+  final dynamic profileData;
+  @override
+  final int fieldType;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.profileUpdateOnclick(profileData: $profileData, fieldType: $fieldType)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProfileUpdateOnclickImpl &&
+            const DeepCollectionEquality()
+                .equals(other.profileData, profileData) &&
+            (identical(other.fieldType, fieldType) ||
+                other.fieldType == fieldType));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(profileData), fieldType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProfileUpdateOnclickImplCopyWith<_$ProfileUpdateOnclickImpl>
+      get copyWith =>
+          __$$ProfileUpdateOnclickImplCopyWithImpl<_$ProfileUpdateOnclickImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getProfileScreenData,
+    required TResult Function(dynamic profileData, int fieldType)
+        profileUpdateOnclick,
+  }) {
+    return profileUpdateOnclick(profileData, fieldType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getProfileScreenData,
+    TResult? Function(dynamic profileData, int fieldType)? profileUpdateOnclick,
+  }) {
+    return profileUpdateOnclick?.call(profileData, fieldType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getProfileScreenData,
+    TResult Function(dynamic profileData, int fieldType)? profileUpdateOnclick,
+    required TResult orElse(),
+  }) {
+    if (profileUpdateOnclick != null) {
+      return profileUpdateOnclick(profileData, fieldType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetProfileScreenData value) getProfileScreenData,
+    required TResult Function(_ProfileUpdateOnclick value) profileUpdateOnclick,
+  }) {
+    return profileUpdateOnclick(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetProfileScreenData value)? getProfileScreenData,
+    TResult? Function(_ProfileUpdateOnclick value)? profileUpdateOnclick,
+  }) {
+    return profileUpdateOnclick?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetProfileScreenData value)? getProfileScreenData,
+    TResult Function(_ProfileUpdateOnclick value)? profileUpdateOnclick,
+    required TResult orElse(),
+  }) {
+    if (profileUpdateOnclick != null) {
+      return profileUpdateOnclick(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ProfileUpdateOnclick implements ProfileEvent {
+  const factory _ProfileUpdateOnclick(
+      {required final dynamic profileData,
+      required final int fieldType}) = _$ProfileUpdateOnclickImpl;
+
+  dynamic get profileData;
+  int get fieldType;
+  @JsonKey(ignore: true)
+  _$$ProfileUpdateOnclickImplCopyWith<_$ProfileUpdateOnclickImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

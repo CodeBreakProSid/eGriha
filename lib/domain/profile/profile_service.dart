@@ -6,6 +6,7 @@ import 'model/profile.dart';
 abstract class ProfileService {
   Future<Either<MainFailures, Profile>> getProfileDetails();
   Future<Either<MainFailures, Profile>> updateProfile({
-    required Map<String, dynamic>? officerProfileFormData,
+    required dynamic officerProfileData,
+    required int fieldType,
   });
 }

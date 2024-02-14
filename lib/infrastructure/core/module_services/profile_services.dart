@@ -42,4 +42,56 @@ class ProfileServices {
       return Left(MainFailures.clientFailure(responseMessage: e.toString()));
     }
   }
+
+  static Future<Either<MainFailures, Profile>> updateProfile({
+    required dynamic officerProfileData,
+    required int fieldType,
+  }) async {
+    try {
+      String? token = await TokenServies().readTokenFromCache();
+      FormData newProfleData = FormData();
+
+      switch (fieldType) {
+        case 1:
+          print('name');
+          print(officerProfileData);
+          newProfleData = FormData.fromMap({
+            'full_name': officerProfileData,
+          });
+
+          break;
+        case 2:
+          print('gender');
+          break;
+        case 3:
+          print('phone');
+          break;
+        case 4:
+          print('email');
+          break;
+        case 5:
+          print('address');
+          break;
+        case 6:
+          print('photo');
+          break;
+        default:
+          print('Unknown input.');
+      }
+      final Response response = await dioService.patch(
+        ApiEndPoints.OFFICER_PROFILE,
+        accessToken: token,
+        data: newProfleData,
+      );
+
+      print(response.data.toString());
+
+      return const Left(MainFailures.serverFailure());
+    } on DioException catch (e) {
+      return Left(MainFailures.clientFailure(
+          responseMessage: e.message ?? 'Dio exception'));
+    } catch (e) {
+      return Left(MainFailures.clientFailure(responseMessage: e.toString()));
+    }
+  }
 }

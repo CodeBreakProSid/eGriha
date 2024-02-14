@@ -21,9 +21,19 @@ class ProfileServiceImplementation implements ProfileService {
   }
 
   @override
-  Future<Either<MainFailures, Profile>> updateProfile(
-      {required Map<String, dynamic>? officerProfileFormData}) {
-    // TODO: implement updateProfile
-    throw UnimplementedError();
+  Future<Either<MainFailures, Profile>> updateProfile({
+    required officerProfileData,
+    required fieldType,
+  }) async {
+    try {
+      return await ProfileServices.updateProfile(
+        officerProfileData: officerProfileData,
+        fieldType: fieldType,
+      );
+    } catch (e) {
+      if (kDebugMode) rethrow;
+
+      return Left(MainFailures.clientFailure(responseMessage: e.toString()));
+    }
   }
 }
