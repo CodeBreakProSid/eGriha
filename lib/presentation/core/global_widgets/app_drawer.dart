@@ -67,7 +67,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            officer.address ?? 'Address',
+                            officer.username ?? 'User Name',
                             style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 12,

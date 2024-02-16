@@ -61,3 +61,20 @@ TextStyle APP_BAR_TEXT_STYLE = const TextStyle(
   color: Colors.black,
   fontWeight: FontWeight.bold,
 );
+
+//Profile module theme
+//Container borderRadius
+
+BorderRadiusGeometry P_CONTAINER_RADIUS = const BorderRadius.only(
+  topLeft: Radius.circular(10),
+  topRight: Radius.circular(10),
+  bottomLeft: Radius.circular(10),
+  bottomRight: Radius.circular(10),
+);
+
+//Text style for Personal info widget
+TextStyle P_PERSONAL_INFO = const TextStyle(
+  fontSize: 18,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
