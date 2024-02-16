@@ -78,3 +78,25 @@ TextStyle P_PERSONAL_INFO = const TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.bold,
 );
+
+TextStyle P_PERSONAL_INFO_HEADING = TextStyle(
+  color: Colors.grey.shade600,
+  fontSize: 15,
+);
+
+TextStyle P_PERSONAL_INFO_CONTENT = const TextStyle(
+  color: Colors.black,
+  fontSize: 15,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle P_PERSONAL_INFO_TRAILING = TextStyle(
+  color: Colors.grey.shade600,
+  fontSize: 11,
+  fontWeight: FontWeight.bold,
+);
+
+//Colors in Profile
+
+Color P_START_ICON_COLOR = Colors.grey.shade600;
+Color P_END_ICON_COLOR = Colors.green.shade700;

@@ -391,7 +391,7 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
                   flex: 1,
                   child: IconButton(
                     onPressed: () async {
-                      //TODO delete profile pic.
+                      //TODO function to handle
                     },
                     icon: Icon(
                       size: 25,
