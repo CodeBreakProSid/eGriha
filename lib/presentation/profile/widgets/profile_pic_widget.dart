@@ -20,19 +20,18 @@ class ProfilePicWidget extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.all(5.0),
           child: Container(
             width: double.infinity,
             height: 250,
-            decoration: BoxDecoration(
-              color: Colors.orangeAccent.withOpacity(0.2),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
-              image: const DecorationImage(
+            decoration: const BoxDecoration(
+              // borderRadius: BorderRadius.only(
+              //   topLeft: Radius.circular(10),
+              //   topRight: Radius.circular(10),
+              //   bottomLeft: Radius.circular(10),
+              //   bottomRight: Radius.circular(10),
+              // ),
+              image: DecorationImage(
                 fit: BoxFit.fill,
                 opacity: 0.2,
                 image: AssetImage(
@@ -42,7 +41,9 @@ class ProfilePicWidget extends StatelessWidget {
             ),
             child: Column(
               children: [
+                //Profile pic and uploading new pic.
                 GestureDetector(
+                  //Function call for select profile pic
                   onTap: () async {
                     await showModalBottomSheet(
                       context: context,
@@ -64,12 +65,15 @@ class ProfilePicWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(25.0),
                     child: (state.officerProfile?.profilePicture == null ||
                             state.officerProfile?.profilePicture == '')
+                        //If state don't have profile picture
+                        //load default profile pic.
                         ? const CircleAvatar(
                             radius: 80,
                             backgroundImage: AssetImage(
                               AssetUrls.LOGO,
                             ),
                           )
+                        //Else load profile pic from state.
                         : Stack(
                             children: [
                               CircleAvatar(
@@ -77,11 +81,13 @@ class ProfilePicWidget extends StatelessWidget {
                                 child: ClipOval(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   child: Image.network(
-                                    width: 200,
+                                    width: 300,
                                     height: 200,
                                     state.officerProfile!.profilePicture
                                         as String,
                                     fit: BoxFit.cover,
+                                    //Loading progress circle while
+                                    //loading the profile pic.
                                     loadingBuilder: (BuildContext _,
                                         Widget child,
                                         ImageChunkEvent? progres) {
@@ -95,19 +101,21 @@ class ProfilePicWidget extends StatelessWidget {
                                         );
                                       }
                                     },
+                                    //If internet service is not available
+                                    //while loading profile pic,then UI will
+                                    //replace with a default icon
                                     errorBuilder: (BuildContext _, Object obj,
                                         StackTrace? trace) {
                                       return const Center(
-                                          child: Icon(Icons.wifi));
+                                          child: Icon(Icons.wifi_off));
                                     },
                                   ),
                                 ),
                               ),
+                              //Camera icon for choose profile pic
                               Positioned(
                                 bottom: 0,
-                                left: 110,
-                                right: 0,
-                                top: 100,
+                                left: 100,
                                 child: IconButton(
                                   onPressed: () async {
                                     await showModalBottomSheet(
@@ -128,10 +136,14 @@ class ProfilePicWidget extends StatelessWidget {
                                       },
                                     );
                                   },
-                                  icon: const Icon(
-                                    size: 40,
-                                    Icons.camera_alt,
-                                    color: Colors.orangeAccent,
+                                  icon: const CircleAvatar(
+                                    backgroundColor: Colors.green,
+                                    radius: 25,
+                                    child: Icon(
+                                      size: 35,
+                                      Icons.camera_alt,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -139,26 +151,14 @@ class ProfilePicWidget extends StatelessWidget {
                           ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'User ID :',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
-                      ),
-                    ),
-                    Text(
-                      state.officerProfile!.username as String,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
-                      ),
-                    ),
-                  ],
+                //User id display on below Text field.
+                Text(
+                  'User ID : ${state.officerProfile!.username}',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
                 ),
               ],
             ),
