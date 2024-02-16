@@ -5,9 +5,11 @@ import 'package:flutter/foundation.dart';
 
 import '../../../domain/core/failures/failures.dart';
 import '../../../domain/login/model/login_response.dart';
+import '../../../presentation/core/const/ui_const.dart';
 import '../const/api_end_points.dart';
 import '../const/cache_const.dart';
 import '../global_services/cache_Services.dart';
+import 'officer_profile_services.dart';
 import 'officer_services.dart';
 
 class AuthServices {
@@ -101,6 +103,8 @@ class AuthServices {
         //the officer basic details from cache memory
         await CacheServices().writeToCache(CacheConst.KEY, null);
         await OfficerService().removeOfficer();
+        await OfficerProfileServices().removeOfficerProfile();
+        indexChangeNotifier = ValueNotifier(1);
 
         return true;
       } else {

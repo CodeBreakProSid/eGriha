@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:egraha_app/domain/profile/model/profile.dart';
@@ -53,27 +55,48 @@ class ProfileServices {
 
       switch (fieldType) {
         case 1:
-          print('name');
-          print(officerProfileData);
           newProfleData = FormData.fromMap({
             'full_name': officerProfileData,
           });
 
           break;
         case 2:
-          print('gender');
+          newProfleData = FormData.fromMap({
+            'gender': officerProfileData,
+          });
           break;
         case 3:
-          print('phone');
+          newProfleData = FormData.fromMap({
+            'phone_number': officerProfileData,
+          });
           break;
         case 4:
-          print('email');
+          newProfleData = FormData.fromMap({
+            'email': officerProfileData,
+          });
           break;
         case 5:
-          print('address');
+          newProfleData = FormData.fromMap({
+            'address': officerProfileData,
+          });
           break;
         case 6:
-          print('photo');
+          print('Before API call');
+          officerProfileData != null
+              ? newProfleData = FormData.fromMap({
+                  'profile_picture': MultipartFile.fromBytes(
+                    await officerProfileData.readAsBytes(),
+                    filename: officerProfileData.name,
+                  )
+
+                  // MultipartFile.fromString(
+                  //   officerProfileData,
+                  //   filename: officerProfileData.name,
+                  // )
+                })
+              : newProfleData = FormData.fromMap({
+                  'profile_picture': '',
+                });
           break;
         default:
           print('Unknown input.');
@@ -84,13 +107,20 @@ class ProfileServices {
         data: newProfleData,
       );
 
-      print(response.data.toString());
+      if (response.statusCode == 200) {
+        final jsonToProfileResponseObj = Profile.fromJson(response.data);
 
-      return const Left(MainFailures.serverFailure());
+        await OfficerProfileServices().saveOfficerProfile(response.data);
+
+        return Right(jsonToProfileResponseObj);
+      } else {
+        return const Left(MainFailures.serverFailure());
+      }
     } on DioException catch (e) {
       return Left(MainFailures.clientFailure(
           responseMessage: e.message ?? 'Dio exception'));
     } catch (e) {
+      print(e.toString());
       return Left(MainFailures.clientFailure(responseMessage: e.toString()));
     }
   }

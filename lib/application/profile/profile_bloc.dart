@@ -15,39 +15,41 @@ part 'profile_bloc.freezed.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileService profileService;
   ProfileBloc(this.profileService) : super(ProfileState.initial()) {
-    on<_GetProfileScreenData>((event, emit) async {
-      if (state.officerProfile != null) {
-        emit(state);
-      }
+    on<_GetProfileScreenData>(
+      (event, emit) async {
+        if (state.officerProfile != null) {
+          emit(state);
+        }
 
-      emit(state.copyWith(
-        isLoading: true,
-        hasError: false,
-      ));
+        emit(state.copyWith(
+          isLoading: true,
+          hasError: false,
+        ));
 
-      final tempOfficerProfile = await profileService.getProfileDetails();
+        final tempOfficerProfile = await profileService.getProfileDetails();
 
-      final tempResponse = tempOfficerProfile.fold(
-        (lleft_failure) {
-          return ProfileState(
-            stateID: DateTime.now().microsecondsSinceEpoch.toString(),
-            officerProfile: null,
-            isLoading: false,
-            hasError: true,
-          );
-        },
-        (right_success) {
-          return ProfileState(
-            stateID: DateTime.now().microsecondsSinceEpoch.toString(),
-            officerProfile: right_success,
-            isLoading: false,
-            hasError: false,
-          );
-        },
-      );
-      //Emit the state for UI chages
-      emit(tempResponse);
-    });
+        final tempResponse = tempOfficerProfile.fold(
+          (lleft_failure) {
+            return ProfileState(
+              stateID: DateTime.now().microsecondsSinceEpoch.toString(),
+              officerProfile: null,
+              isLoading: false,
+              hasError: true,
+            );
+          },
+          (right_success) {
+            return ProfileState(
+              stateID: DateTime.now().microsecondsSinceEpoch.toString(),
+              officerProfile: right_success,
+              isLoading: false,
+              hasError: false,
+            );
+          },
+        );
+        //Emit the state for UI chages
+        emit(tempResponse);
+      },
+    );
 
     on<_ProfileUpdateOnclick>(
       (event, emit) async {
@@ -60,10 +62,31 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           ),
         );
 
-        await profileService.updateProfile(
+        final tempOfficerProfile = await profileService.updateProfile(
           officerProfileData: event.profileData,
           fieldType: event.fieldType,
         );
+
+        final tempResponse = tempOfficerProfile.fold(
+          (lleft_failure) {
+            return ProfileState(
+              stateID: DateTime.now().microsecondsSinceEpoch.toString(),
+              officerProfile: null,
+              isLoading: false,
+              hasError: true,
+            );
+          },
+          (right_success) {
+            return ProfileState(
+              stateID: DateTime.now().microsecondsSinceEpoch.toString(),
+              officerProfile: right_success,
+              isLoading: false,
+              hasError: false,
+            );
+          },
+        );
+        //Emit the state for UI chages
+        emit(tempResponse);
       },
     );
   }

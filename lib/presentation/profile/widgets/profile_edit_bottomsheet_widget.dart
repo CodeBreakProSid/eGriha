@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../application/profile/profile_bloc.dart';
@@ -29,9 +30,7 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
       if (fieldType == PROFILE_FIELD['name']) {
         controller.text = state.officerProfile!.fullName ?? '';
         controller.selection = TextSelection.fromPosition(
-          TextPosition(
-            offset: controller.text.length,
-          ),
+          TextPosition(offset: controller.text.length),
         );
       } else {
         if (fieldType == PROFILE_FIELD['phone']) {
@@ -73,6 +72,30 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
                           name: 'fieldName',
                           style: const TextStyle(color: Colors.white),
                           initialValue: controller.text,
+                          validator: (value) {
+                            if (fieldType == PROFILE_FIELD['phone']) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your mobile number';
+                              } else if (!RegExp(
+                                r'(^(?:[+0]9)?[0-9]{10}$)',
+                              ).hasMatch(value)) {
+                                return 'Please enter valid mobile number';
+                              }
+
+                              return null;
+                            }
+                            if (fieldType == PROFILE_FIELD['email']) {
+                              if (!RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                              ).hasMatch(value as String)) {
+                                return 'Please enter a valid email id';
+                              }
+
+                              return null;
+                            }
+
+                            return null;
+                          },
                         ),
                       ),
                       const Expanded(
@@ -134,114 +157,6 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
           ),
         ),
       );
-      // return Padding(
-      //   padding: EdgeInsets.only(
-      //     bottom: MediaQuery.of(context).viewInsets.bottom,
-      //   ),
-      //   child: SingleChildScrollView(
-      //     child: FormBuilder(
-      //       key: profileFormKey,
-      //       child: Container(
-      //         width: double.infinity,
-      //         decoration: const BoxDecoration(
-      //           color: Color.fromARGB(255, 25, 41, 33),
-      //         ),
-      //         padding: const EdgeInsets.all(16.0),
-      //         child: Column(
-      //           mainAxisSize: MainAxisSize.min,
-      //           crossAxisAlignment: CrossAxisAlignment.stretch,
-      //           children: [
-      //             Text(
-      //               titleMessage,
-      //               style: const TextStyle(
-      //                 color: Colors.white,
-      //                 fontSize: 17,
-      //                 fontWeight: FontWeight.bold,
-      //               ),
-      //             ),
-      //             const SizedBox(height: 16.0),
-      //             Row(
-      //               children: [
-      //                 Expanded(
-      //                   flex: 10,
-      //                   // child: TextField(
-      //                   //   //controller: controller,
-      //                   //   style: TextStyle(
-      //                   //     color: Colors.white,
-      //                   //   ),
-      //                   //   decoration: InputDecoration(
-      //                   //     enabledBorder: UnderlineInputBorder(
-      //                   //       borderSide: BorderSide(
-      //                   //         color: Color.fromARGB(255, 16, 126, 98),
-      //                   //         width: 2,
-      //                   //       ),
-      //                   //     ),
-      //                   //     focusedBorder: UnderlineInputBorder(
-      //                   //       borderSide: BorderSide(
-      //                   //         color: Color.fromARGB(255, 16, 126, 98),
-      //                   //         width: 2,
-      //                   //       ),
-      //                   //     ),
-      //                   //   ),
-      //                   // ),
-      //                   child: FormBuilderTextField(
-      //                     name: 'fullName',
-      //                     textInputAction: TextInputAction.next,
-      //                     //initialValue: state.officerProfile!.fullName,
-      //                   ),
-      //                 ),
-      //                 const Expanded(
-      //                   flex: 1,
-      //                   child: Text(
-      //                     '😊',
-      //                     style: TextStyle(
-      //                       fontSize: 17,
-      //                     ),
-      //                   ),
-      //                 ),
-      //               ],
-      //             ),
-      //             const SizedBox(height: 20.0),
-      //             Row(
-      //               mainAxisAlignment: MainAxisAlignment.end,
-      //               children: [
-      //                 TextButton(
-      //                   onPressed: () {
-      //                     Navigator.of(context).pop();
-      //                   },
-      //                   child: const Text(
-      //                     'Cancel',
-      //                     style: TextStyle(
-      //                       color: Color.fromARGB(255, 16, 126, 98),
-      //                     ),
-      //                   ),
-      //                 ),
-      //                 const SizedBox(width: 20.0),
-      //                 TextButton(
-      //                   onPressed: () {
-      //                     BlocProvider.of<ProfileBloc>(context).add(
-      //                       ProfileEvent.profileUpdateOnclick(
-      //                         profileData: controller.text,
-      //                         fieldType: fieldType,
-      //                       ),
-      //                     );
-      //                     Navigator.of(context).pop();
-      //                   },
-      //                   child: const Text(
-      //                     'Save',
-      //                     style: TextStyle(
-      //                       color: Color.fromARGB(255, 16, 126, 98),
-      //                     ),
-      //                   ),
-      //                 ),
-      //               ],
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // );
     }
     if (fieldType == PROFILE_FIELD['gender']) {
       return Padding(
@@ -321,7 +236,7 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
                         onPressed: () {
                           BlocProvider.of<ProfileBloc>(context).add(
                             ProfileEvent.profileUpdateOnclick(
-                              profileData: controller.text,
+                              profileData: profileGenderChangeNotifier.value,
                               fieldType: fieldType,
                             ),
                           );
@@ -346,93 +261,102 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
     }
     if (fieldType == PROFILE_FIELD['address']) {
       controller.text = state.officerProfile!.address ?? '';
-      return Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: SingleChildScrollView(
+      controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: controller.text.length),
+      );
+      return SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           child: Container(
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 25, 41, 33),
             ),
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  titleMessage,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+            child: FormBuilder(
+              key: profileFormKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    titleMessage,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 16.0),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 10,
-                      child: TextField(
-                        controller: controller,
-                        maxLines: 4,
-                        style: const TextStyle(
-                          color: Colors.white,
+                  const SizedBox(height: 16.0),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 10,
+                        child: FormBuilderTextField(
+                          name: 'fieldName',
+                          maxLines: 5,
+                          keyboardType: TextInputType.multiline,
+                          textInputAction: TextInputAction.newline,
+                          style: const TextStyle(color: Colors.white),
+                          initialValue: controller.text,
                         ),
-                        decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 16, 126, 98),
-                              width: 2,
-                            ),
+                      ),
+                      const Expanded(
+                        child: Text(
+                          '😊',
+                          style: TextStyle(
+                            fontSize: 17,
                           ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 16, 126, 98),
-                              width: 2,
-                            ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 20.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 16, 126, 98),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text(
-                        'Cancel',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 16, 126, 98),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 20.0),
-                    TextButton(
-                      onPressed: () {
-                        BlocProvider.of<ProfileBloc>(context).add(
-                          ProfileEvent.profileUpdateOnclick(
-                            profileData: controller.text,
-                            fieldType: fieldType,
+                      const SizedBox(width: 20.0),
+                      TextButton(
+                        onPressed: () {
+                          if (profileFormKey.currentState?.saveAndValidate() ??
+                              false) {
+                            final String updatedProfileData = (profileFormKey
+                                        .currentState?.value['fieldName'] ??
+                                    '')
+                                .toString();
+
+                            BlocProvider.of<ProfileBloc>(context).add(
+                              ProfileEvent.profileUpdateOnclick(
+                                profileData: updatedProfileData,
+                                fieldType: fieldType,
+                              ),
+                            );
+                            Navigator.of(context).pop();
+                          }
+                        },
+                        child: const Text(
+                          'Save',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 16, 126, 98),
                           ),
-                        );
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text(
-                        'Save',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 16, 126, 98),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -490,9 +414,8 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
                 Icons.camera,
                 color: Colors.white,
               ),
-              onTap: () {
-                Navigator.pop(context);
-                _getImage(ImageSource.camera);
+              onTap: () async {
+                await _getImage(ImageSource.camera, context);
               },
             ),
             ListTile(
@@ -506,9 +429,8 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
                 Icons.image,
                 color: Colors.white,
               ),
-              onTap: () {
-                Navigator.pop(context);
-                _getImage(ImageSource.gallery);
+              onTap: () async {
+                await _getImage(ImageSource.gallery, context);
               },
             ),
           ],
@@ -517,14 +439,20 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
     }
   }
 
-  Future<void> _getImage(ImageSource source) async {
+  Future<void> _getImage(ImageSource source, BuildContext context) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
 
     if (pickedFile != null) {
-      // setState(() {
-      //   _imageFile = File(pickedFile.path);
-      // });
+      XFile? uploadImages = pickedFile;
+
+      BlocProvider.of<ProfileBloc>(context).add(
+        ProfileEvent.profileUpdateOnclick(
+          profileData: uploadImages,
+          fieldType: fieldType,
+        ),
+      );
+      Navigator.pop(context);
     }
   }
 }

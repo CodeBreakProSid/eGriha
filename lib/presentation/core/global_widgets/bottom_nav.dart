@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../const/ui_const.dart';
 
-//ValueNotifier<int> indexChangeNotifier = ValueNotifier(1);
-
 class BottomNavigationWidget extends StatelessWidget {
   const BottomNavigationWidget({
     super.key,
