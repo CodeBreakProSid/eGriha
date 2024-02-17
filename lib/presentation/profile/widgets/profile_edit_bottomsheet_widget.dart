@@ -25,27 +25,6 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
   final ProfileState state;
   final String titleMessage;
 
-  Future<void> _getImage(ImageSource source, BuildContext context) async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: source);
-
-    if (pickedFile != null) {
-      XFile? uploadImages = pickedFile;
-
-      if (!context.mounted) {
-        return;
-      } else {
-        BlocProvider.of<ProfileBloc>(context).add(
-          ProfileEvent.profileUpdateOnclick(
-            profileData: uploadImages,
-            fieldType: fieldType,
-          ),
-        );
-        Navigator.pop(context);
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     //Created text editing controller
@@ -484,7 +463,47 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
                 color: APP_DRAWER_BACKGROUND_COLOR,
               ),
               onTap: () async {
-                await _getImage(ImageSource.camera, context);
+                //Call uploadImage function with parameter as source
+                //It returns XFile/null
+                final XFile? tempImage =
+                    await ImageUploadServices().uploadImage(ImageSource.camera);
+                //Check the tempImage variable has null value or not
+                if (tempImage != null) {
+                  //Check the BuildContext is mounted or not
+                  if (!context.mounted) {
+                    return;
+                  }
+                  //If the context is mounted Call ProfileUpdateOnclick event.
+                  else {
+                    BlocProvider.of<ProfileBloc>(context).add(
+                      ProfileEvent.profileUpdateOnclick(
+                        profileData: tempImage,
+                        fieldType: fieldType,
+                      ),
+                    );
+                    //After successfull event call pop to previous stacked screen.
+                    Navigator.pop(context);
+                  }
+                }
+                //If the tempImage variable has null value.
+                else {
+                  //Check the BuildContext is mounted or not.
+                  //If it not mounted the return from here.
+                  if (!context.mounted) {
+                    return;
+                  }
+                  //Else the show a snackBar error with invalid image format.
+                  else {
+                    showSnackBar(
+                      context: context,
+                      title: 'Whoops!!! 🤔',
+                      message: 'Invalid Image format!.. Choose JPEG/JPG file',
+                      contentType: ContentType.failure,
+                    );
+                    //After successfull event call pop to previous stacked screen.
+                    Navigator.pop(context);
+                  }
+                }
               },
             ),
             //Upload image from gallery widget
@@ -500,30 +519,44 @@ class ProfileEditBottomSheetWidget extends StatelessWidget {
                 color: APP_DRAWER_BACKGROUND_COLOR,
               ),
               onTap: () async {
+                //Call uploadImage function with parameter as source
+                //It returns XFile/null
                 final XFile? tempImage = await ImageUploadServices()
                     .uploadImage(ImageSource.gallery);
+                //Check the tempImage variable has null value or not
                 if (tempImage != null) {
+                  //Check the BuildContext is mounted or not
                   if (!context.mounted) {
                     return;
-                  } else {
+                  }
+                  //If the context is mounted Call ProfileUpdateOnclick event.
+                  else {
                     BlocProvider.of<ProfileBloc>(context).add(
                       ProfileEvent.profileUpdateOnclick(
                         profileData: tempImage,
                         fieldType: fieldType,
                       ),
                     );
+                    //After successfull event call pop to previous stacked screen.
                     Navigator.pop(context);
                   }
-                } else {
+                }
+                //If the tempImage variable has null value.
+                else {
+                  //Check the BuildContext is mounted or not.
+                  //If it not mounted the return from here.
                   if (!context.mounted) {
                     return;
-                  } else {
+                  }
+                  //Else the show a snackBar error with invalid image format.
+                  else {
                     showSnackBar(
                       context: context,
                       title: 'Whoops!!! 🤔',
                       message: 'Invalid Image format!.. Choose JPEG/JPG file',
                       contentType: ContentType.failure,
                     );
+                    //After successfull event call pop to previous stacked screen.
                     Navigator.pop(context);
                   }
                 }
