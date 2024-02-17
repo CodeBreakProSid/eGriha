@@ -67,11 +67,49 @@ class ProfilePicWidget extends StatelessWidget {
                             state.officerProfile?.profilePicture == '')
                         //If state don't have profile picture
                         //load default profile pic.
-                        ? const CircleAvatar(
-                            radius: 80,
-                            backgroundImage: AssetImage(
-                              AssetUrls.LOGO,
-                            ),
+                        ? Stack(
+                            children: [
+                              const CircleAvatar(
+                                radius: 80,
+                                backgroundImage: AssetImage(
+                                  AssetUrls.LOGO,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                left: 100,
+                                child: IconButton(
+                                  onPressed: () async {
+                                    await showModalBottomSheet(
+                                      context: context,
+                                      isScrollControlled: true,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(0),
+                                      ),
+                                      builder: (BuildContext context) {
+                                        return ProfileEditBottomSheetWidget(
+                                          titleMessage:
+                                              'Select profile picture',
+                                          fieldType:
+                                              PROFILE_FIELD['photo'] as int,
+                                          state: state,
+                                          profileFormKey: profileFormKey,
+                                        );
+                                      },
+                                    );
+                                  },
+                                  icon: const CircleAvatar(
+                                    backgroundColor: Colors.green,
+                                    radius: 25,
+                                    child: Icon(
+                                      size: 35,
+                                      Icons.camera_alt,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           )
                         //Else load profile pic from state.
                         : Stack(
