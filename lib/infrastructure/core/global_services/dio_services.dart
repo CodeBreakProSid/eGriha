@@ -18,11 +18,11 @@ class DioServices {
         //API Base url
         baseUrl: ApiEndPoints.TEST_BASE_URL,
         //30 secs for connection time out
-        connectTimeout: const Duration(milliseconds: 30000),
+        connectTimeout: const Duration(seconds: 60),
         //30 secs for receive response
-        receiveTimeout: const Duration(milliseconds: 30000),
+        receiveTimeout: const Duration(seconds: 60),
         //30 secs for client request sending
-        sendTimeout: const Duration(milliseconds: 30000),
+        sendTimeout: const Duration(seconds: 60),
         followRedirects: false,
         validateStatus: (status) => status! < 500,
       ),

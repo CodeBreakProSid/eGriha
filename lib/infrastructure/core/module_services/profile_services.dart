@@ -81,18 +81,12 @@ class ProfileServices {
           });
           break;
         case 6:
-          print('Before API call');
           officerProfileData != null
               ? newProfleData = FormData.fromMap({
                   'profile_picture': MultipartFile.fromBytes(
                     await officerProfileData.readAsBytes(),
                     filename: officerProfileData.name,
                   )
-
-                  // MultipartFile.fromString(
-                  //   officerProfileData,
-                  //   filename: officerProfileData.name,
-                  // )
                 })
               : newProfleData = FormData.fromMap({
                   'profile_picture': '',

@@ -26,9 +26,16 @@ const double LB_HEIGHT = 50;
 //Screen Spacing
 const L_HEIGHT5 = SizedBox(height: 5);
 const L_HEIGHT10 = SizedBox(height: 10);
+const L_HEIGHT15 = SizedBox(height: 15);
 const L_HEIGHT20 = SizedBox(height: 20);
 const L_HEIGHT40 = SizedBox(height: 40);
 const L_HEIGHT100 = SizedBox(height: 100);
+
+const L_WIDTH10 = SizedBox(width: 10);
+const L_WIDTH20 = SizedBox(width: 20);
+const L_WIDTH30 = SizedBox(width: 30);
+const L_WIDTH40 = SizedBox(width: 40);
+const L_WIDTH50 = SizedBox(width: 50);
 
 //Borders & Radius
 //Login page
@@ -100,3 +107,13 @@ TextStyle P_PERSONAL_INFO_TRAILING = TextStyle(
 
 Color P_START_ICON_COLOR = Colors.grey.shade600;
 Color P_END_ICON_COLOR = Colors.green.shade700;
+Color P_BUTTON_COLOR = const Color.fromARGB(255, 16, 126, 98);
+Color P_EDITING_CONTAINER_COLOR = const Color.fromARGB(255, 25, 41, 33);
+
+//Profile bottom sheet Text style
+
+TextStyle P_BOTTOMSHEET_TEXT_STYLE = const TextStyle(
+  color: Colors.white,
+  fontSize: 17,
+  fontWeight: FontWeight.bold,
+);
