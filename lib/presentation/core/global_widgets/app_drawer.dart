@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/login/model/login_response.dart';
+import '../../../domain/profile/model/profile.dart';
+import '../../../infrastructure/core/module_services/officer_profile_services.dart';
 import '../../../infrastructure/core/module_services/officer_services.dart';
 import '../asset_url/asset_url.dart';
 import '../const/ui_const.dart';
@@ -21,9 +23,10 @@ class AppDrawer extends StatelessWidget {
             shrinkWrap: true,
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [
-              FutureBuilder<User?>(
-                future: OfficerService().getOfficer(),
-                builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+              FutureBuilder<Profile?>(
+                future: OfficerProfileServices().getOfficerProfile(),
+                builder:
+                    (BuildContext context, AsyncSnapshot<Profile?> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator(
                       strokeWidth: 2,
@@ -31,7 +34,7 @@ class AppDrawer extends StatelessWidget {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    final officer = snapshot.data!;
+                    final officerProfile = snapshot.data!;
                     return DrawerHeader(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
@@ -48,18 +51,18 @@ class AppDrawer extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 40,
-                            child: officer.thumbnails != null
+                            child: officerProfile.thumbnails != null
                                 ? CircleAvatar(
                                     radius: 40,
-                                    backgroundImage:
-                                        NetworkImage(officer.thumbnails!))
+                                    backgroundImage: NetworkImage(
+                                        officerProfile.thumbnails!))
                                 : const Icon(Icons.person),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
                           Text(
-                            officer.fullName ?? 'Officer Name',
+                            officerProfile.fullName ?? 'Officer Name',
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -67,7 +70,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            officer.username ?? 'User Name',
+                            officerProfile.username ?? 'User Name',
                             style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 12,
