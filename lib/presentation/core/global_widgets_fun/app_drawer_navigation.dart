@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../infrastructure/core/module_services/auth_services.dart';
-//import '../../login/screen_login.dart';
-import '../../login/screen_login1.dart';
+import '../../login/screen_login.dart';
 import '../../main_page/screen_main_page.dart';
 import '../const/ui_const.dart';
 
@@ -47,7 +46,7 @@ Future<void> appDrawerNavigation(BuildContext context, int tileValue) async {
       isRememberCheckState.value = false;
       passwordShowHide.value = false;
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const ScreenLogin1()));
+          MaterialPageRoute(builder: (context) => const ScreenLogin()));
       break;
     default:
   }
