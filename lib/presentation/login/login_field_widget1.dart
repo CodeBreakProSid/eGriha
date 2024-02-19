@@ -3,24 +3,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../core/themes/theme_data.dart';
-import 'login_button_widget.dart';
-import 'password_widget.dart';
-import 'rememberMe_widget.dart';
-import 'username_widget.dart';
+import '../../../application/login/login_bloc.dart';
+import '../core/themes/theme_data.dart';
+import 'login_button_widget1.dart';
+import 'password_widget1.dart';
+import 'username_widget1.dart';
+import 'widgets/login_button_widget.dart';
+import 'widgets/rememberMe_widget.dart';
 
-class LoginFieldWidget extends StatelessWidget {
-  const LoginFieldWidget({
+class LoginFieldWidget1 extends StatelessWidget {
+  LoginFieldWidget1({
     super.key,
+    // required this.state,
     required this.loginFormKey,
     required this.context,
     required this.loginData,
   });
 
   // LoginState state;
-  final BuildContext context;
-  final GlobalKey<FormBuilderState> loginFormKey;
-  final Map<String, dynamic>? loginData;
+  BuildContext context;
+  GlobalKey<FormBuilderState> loginFormKey;
+  Map<String, dynamic>? loginData;
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +60,12 @@ class LoginFieldWidget extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      UsernameWidget(
+                      UsernameWidget1(
+                        // state: state,
                         loginData: loginData,
                       ),
-                      PasswordWidget(
+                      PasswordWidget1(
+                        //state: state,
                         loginData: loginData,
                       ),
                     ],
@@ -75,7 +80,7 @@ class LoginFieldWidget extends StatelessWidget {
             //Screen height for seperation
             L_HEIGHT20,
             //Login button widget
-            LoginButtonWidget(
+            LoginButtonWidget1(
               loginFormKey: loginFormKey,
               context: context,
             ),

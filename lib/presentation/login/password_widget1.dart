@@ -4,17 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-import '../../../infrastructure/core/const/cache_const.dart';
-import '../../core/const/ui_const.dart';
-import '../../core/themes/theme_data.dart';
+import '../../infrastructure/core/const/cache_const.dart';
+import '../core/const/ui_const.dart';
+import '../core/themes/theme_data.dart';
+import 'screen_login1.dart';
 
-class PasswordWidget extends StatelessWidget {
-  const PasswordWidget({
+class PasswordWidget1 extends StatelessWidget {
+  PasswordWidget1({
     Key? key,
+    //required this.state,
     required this.loginData,
   }) : super(key: key);
 
-  final Map<String, dynamic>? loginData;
+  Map<String, dynamic>? loginData;
+  //LoginState state;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,9 @@ class PasswordWidget extends StatelessWidget {
               color: ICON_COLOR,
             ),
             labelText: 'Password',
+            // border: const OutlineInputBorder(
+            //   borderRadius: CIRCULAR_BORDER,
+            // ),
             border: InputBorder.none,
             suffixIcon: IconButton(
               onPressed: () {

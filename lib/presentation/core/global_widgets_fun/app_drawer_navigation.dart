@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../infrastructure/core/module_services/auth_services.dart';
-import '../../login/screen_login.dart';
+//import '../../login/screen_login.dart';
+import '../../login/screen_login1.dart';
 import '../../main_page/screen_main_page.dart';
 import '../const/ui_const.dart';
 
@@ -43,8 +44,10 @@ Future<void> appDrawerNavigation(BuildContext context, int tileValue) async {
     case 6:
       //Need to call token deleting function
       await AuthServices.logoutApiCall();
+      isRememberCheckState.value = false;
+      passwordShowHide.value = false;
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const ScreenLogin()));
+          MaterialPageRoute(builder: (context) => const ScreenLogin1()));
       break;
     default:
   }

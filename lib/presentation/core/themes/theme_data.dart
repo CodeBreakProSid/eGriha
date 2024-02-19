@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 //Login page
 const BG_THEME_COLOR = Colors.blue;
 Color ICON_COLOR = Colors.orange.shade700;
-Color SHADOW_COLOR = const Color.fromRGBO(226, 130, 75, 0.729);
+Color SHADOW_COLOR = const Color.fromARGB(184, 88, 83, 80);
 Color LB_COLOR = const Color.fromARGB(255, 26, 108, 202);
 //APP DRAWER
 const LIST_TILE_TEXT_COLOR = Color.fromARGB(255, 85, 83, 83);
@@ -22,6 +22,23 @@ const EdgeInsets LOGIN_PAGE_PADDING20 = EdgeInsets.all(20);
 const double LOGO_HEIGHT = 100;
 const double LOGO_WIDTH = 130;
 const double LB_HEIGHT = 50;
+const double WIDTH_20 = 20;
+const double HEIGHT_20 = 20;
+
+//Login page container decoration.
+Decoration LOGIN_PAGE_CONTAINER_DECOR = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      BG_THEME_COLOR.shade900,
+      BG_THEME_COLOR.shade900,
+      BG_THEME_COLOR.shade800,
+      BG_THEME_COLOR.shade600,
+      BG_THEME_COLOR.shade500,
+    ],
+  ),
+);
 
 //Screen Spacing
 const L_HEIGHT5 = SizedBox(height: 5);
@@ -116,4 +133,8 @@ TextStyle P_BOTTOMSHEET_TEXT_STYLE = const TextStyle(
   color: Colors.white,
   fontSize: 17,
   fontWeight: FontWeight.bold,
+);
+
+const Widget CIRCULAR_PROGRESSING_INDICATOR = CircularProgressIndicator(
+  strokeWidth: 2,
 );

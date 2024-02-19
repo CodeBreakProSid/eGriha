@@ -19,6 +19,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     //Get details from cache
     on<GetSavedOfficerDetails>(
       (event, emit) async {
+        if (state.userName != null && state.password != null) {
+          emit(state);
+          return;
+        }
         emit(
           LoginState(
             stateID: DateTime.now().microsecondsSinceEpoch.toString(),
@@ -62,7 +66,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           userData: null,
           isLoading: true,
           isAuthenticated: false,
-          isChecked: false,
+          isChecked: state.isChecked,
           hasError: false,
           userName: null,
           password: null,

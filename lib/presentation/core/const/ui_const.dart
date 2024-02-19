@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 ValueNotifier<int> indexChangeNotifier = ValueNotifier(1);
 ValueNotifier<int?> profileGenderChangeNotifier = ValueNotifier(null);
+ValueNotifier<bool> isRememberCheckState = ValueNotifier(false);
+ValueNotifier<bool> passwordShowHide = ValueNotifier(false);
 
 Map<String, int> APP_TILE_VALUE = {
   'home': 1,

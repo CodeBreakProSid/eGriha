@@ -6,20 +6,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../../../application/login/login_bloc.dart';
-import '../../core/const/ui_const.dart';
-import '../../core/global_widgets_fun/snackbar.dart';
-import '../../core/themes/theme_data.dart';
-import '../../main_page/screen_main_page.dart';
+import '../core/const/ui_const.dart';
+import '../core/global_widgets_fun/snackbar.dart';
+import '../core/themes/theme_data.dart';
+import '../main_page/screen_main_page.dart';
+import 'screen_login1.dart';
 
-class LoginButtonWidget extends StatelessWidget {
-  const LoginButtonWidget({
+class LoginButtonWidget1 extends StatelessWidget {
+  LoginButtonWidget1({
     super.key,
     required this.loginFormKey,
+    //required this.state,
     required this.context,
   });
 
-  final GlobalKey<FormBuilderState> loginFormKey;
-  final BuildContext context;
+  GlobalKey<FormBuilderState> loginFormKey;
+  // LoginState state;
+  BuildContext context;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +60,15 @@ class LoginButtonWidget extends StatelessWidget {
                 isChecked: isRemember,
               ),
             );
+            // if (!state.isLoading) {
+            //   BlocProvider.of<LoginBloc>(context).add(
+            //     LoginButtonPressed(
+            //       userName: userName,
+            //       password: password,
+            //       isChecked: isRemember,
+            //     ),
+            //   );
+            // }
           }
         },
         height: LB_HEIGHT,

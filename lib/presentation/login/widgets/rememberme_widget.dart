@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../screen_login.dart';
+import '../../core/const/ui_const.dart';
+import '../../core/themes/theme_data.dart';
 
 class RememberMeWidget extends StatelessWidget {
   const RememberMeWidget({
@@ -15,20 +16,20 @@ class RememberMeWidget extends StatelessWidget {
       children: [
         //Notifier for remember me chackbox option
         ValueListenableBuilder(
-            valueListenable: isRememberCheckState,
-            builder: (BuildContext context, bool newValue, Widget? _) {
-              return Checkbox(
-                //activeColor: PRIMARY_COLOR,
-                value: isRememberCheckState.value,
-                onChanged: (newCheckboxValue) {
-                  isRememberCheckState.value = newCheckboxValue!;
-                },
-              );
-            }),
+          valueListenable: isRememberCheckState,
+          builder: (BuildContext context, bool newValue, Widget? _) {
+            return Checkbox(
+              activeColor: ICON_COLOR,
+              value: isRememberCheckState.value,
+              onChanged: (newCheckboxValue) {
+                isRememberCheckState.value = newCheckboxValue!;
+              },
+            );
+          },
+        ),
         const Text(
           'Remember me',
           style: TextStyle(
-            //color: SUB_TEXT_COLOR,
             fontSize: 12,
             fontWeight: FontWeight.bold,
           ),

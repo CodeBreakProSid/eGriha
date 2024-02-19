@@ -1,73 +1,47 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../application/login/login_bloc.dart';
-import '../core/global_widgets_fun/snackbar.dart';
+import '../../infrastructure/login/login_service_implementation.dart';
 import '../core/themes/theme_data.dart';
-import '../main_page/screen_main_page.dart';
 import 'widgets/keltron_logo_widget.dart';
 import 'widgets/kshb_logo_widget.dart';
 import 'widgets/login_field_widget.dart';
 import 'widgets/welcome_widget.dart';
-
-//Global value notifiers for password & remember me field
-ValueNotifier<bool> passwordShowHide = ValueNotifier(false);
-ValueNotifier<bool> isRememberCheckState = ValueNotifier(false);
 
 class ScreenLogin extends StatelessWidget {
   const ScreenLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //Call event for get officer username & password from cache
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<LoginBloc>(context).add(const GetSavedOfficerDetails());
-    });
-
     //Creating global key for login form
     final loginFormKey = GlobalKey<FormBuilderState>();
-
-    return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
-        if (state.isAuthenticated) {
-          //
-          //Successful login route to home page
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => ScreenMainPage()));
-        } else if (state.hasError) {
-          //
-          //Genrating a snackbar error message
-          showSnackBar(
-            context: context,
-            title: 'Whoops!!! 🤔',
-            message: 'User name or password is "incorrect"!..',
-            contentType: ContentType.failure,
-          );
+    //Future builder that execute a function before UI render.
+    return FutureBuilder<Map<String, dynamic>>(
+      //A future function to get cached username & password
+      future: LoginServiceImplementation().getDetailsFromCache(),
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<Map<String, dynamic>> snapshot,
+      ) {
+        //If the connection is on waiting display a progress
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
         }
-      },
-      child: BlocBuilder<LoginBloc, LoginState>(
-        builder: (context, state) {
+        //If the function returns an error error will display
+        else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        }
+        //Other wise display the login screen with cached info
+        //if the the cache memory has value
+        //else login screen without username and password.
+        else {
           return Scaffold(
             resizeToAvoidBottomInset: false,
-            // backgroundColor: Colors.white,
+            //FormBuilder to collect username and password.
             body: FormBuilder(
               key: loginFormKey,
               child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      BG_THEME_COLOR.shade900,
-                      BG_THEME_COLOR.shade900,
-                      BG_THEME_COLOR.shade800,
-                      BG_THEME_COLOR.shade600,
-                      BG_THEME_COLOR.shade500,
-                    ],
-                  ),
-                ),
+                decoration: LOGIN_PAGE_CONTAINER_DECOR,
                 child: Column(
                   children: [
                     Padding(
@@ -87,9 +61,10 @@ class ScreenLogin extends StatelessWidget {
                           L_HEIGHT10,
                           //Login credential container
                           LoginFieldWidget(
-                            state: state,
+                            //state: state,
                             loginFormKey: loginFormKey,
                             context: context,
+                            loginData: snapshot.data,
                           ),
                           //Screen height for seperation
                           L_HEIGHT100,
@@ -103,8 +78,8 @@ class ScreenLogin extends StatelessWidget {
               ),
             ),
           );
-        },
-      ),
+        }
+      },
     );
   }
 }

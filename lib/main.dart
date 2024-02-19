@@ -9,8 +9,17 @@ import 'domain/core/dep_injection/injectable.dart';
 import 'presentation/root/root_page.dart';
 
 Future<void> main() async {
+  //Allowing the Flutter application to function correctly,
+  //particularly when using plugins or accessing
+  //platform-specific features.
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// Start the storage drive. It's important to use await
+  /// before calling this API, or side effects will occur.
   await GetStorage.init();
+
+  //Allowing dependencies to be easily managed
+  //and accessed throughout the Flutter application.
   await configureInjection();
   runApp(const MyApp());
 }
@@ -20,18 +29,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Transparent safe area
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    //Transparent safe area implemented here.
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+    //Initializing the blocs
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (BuildContext context) => getIt<LoginBloc>()),
         BlocProvider(create: (BuildContext context) => getIt<ProfileBloc>()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'E-Griha',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
@@ -39,6 +51,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
+        //Initial page calling with the home tag(RootPage).
         home: const RootPage(),
       ),
     );
