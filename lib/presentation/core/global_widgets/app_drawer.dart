@@ -53,12 +53,12 @@ class AppDrawer extends StatelessWidget {
                                 ? CircleAvatar(
                                     radius: 40,
                                     backgroundImage: NetworkImage(
-                                        officerProfile.thumbnails!))
+                                      officerProfile.thumbnails!,
+                                    ),
+                                  )
                                 : const Icon(Icons.person),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          const SizedBox(height: 15),
                           Text(
                             officerProfile.fullName ?? 'Officer Name',
                             style: const TextStyle(

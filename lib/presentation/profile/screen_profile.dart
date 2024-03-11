@@ -15,10 +15,10 @@ class ScreenProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Get existing profile info from server through event calling
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<ProfileBloc>(context)
-          .add(const ProfileEvent.getProfileScreenData());
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   BlocProvider.of<ProfileBloc>(context)
+    //       .add(const ProfileEvent.getProfileScreenData());
+    // });
     //Profile UI design starts from here
     return Scaffold(
       //Callling global AppDrawer

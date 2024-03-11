@@ -4,4 +4,6 @@ class AssetUrls {
   static const String LOGO = 'assets/kel_logo.png';
   static const String KSHB_LOGO = 'assets/kshb_logo.png';
   static const String BUILDING_LOGO = 'assets/building6.png';
+  static const String NOTIFICATION_LOGO = 'assets/hb.jpg';
+
 }

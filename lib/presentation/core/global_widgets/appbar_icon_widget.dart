@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../notification/screen_notification.dart';
+
 class AppBarIconWidgetList extends StatelessWidget {
   AppBarIconWidgetList({
     super.key,
@@ -21,7 +23,12 @@ class AppBarIconWidgetList extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            // Get.toNamed(Routes.NOTIFICATION);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ScreenNotification(),
+              ),
+            );
           },
         ),
         const SizedBox(width: 4),

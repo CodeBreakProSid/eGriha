@@ -16,6 +16,7 @@ const APP_DRAWER_HEADER_COLOR = Colors.orangeAccent;
 //Padding used in App
 //Login page
 const EdgeInsets LOGIN_PAGE_PADDING20 = EdgeInsets.all(20);
+const EdgeInsets PADDING5 = EdgeInsets.all(5);
 
 //Height & Width
 //Login Page
@@ -48,6 +49,7 @@ const L_HEIGHT20 = SizedBox(height: 20);
 const L_HEIGHT40 = SizedBox(height: 40);
 const L_HEIGHT100 = SizedBox(height: 100);
 
+const L_WIDTH5 = SizedBox(width: 5);
 const L_WIDTH10 = SizedBox(width: 10);
 const L_WIDTH20 = SizedBox(width: 20);
 const L_WIDTH30 = SizedBox(width: 30);
@@ -95,6 +97,15 @@ BorderRadiusGeometry P_CONTAINER_RADIUS = const BorderRadius.only(
   bottomLeft: Radius.circular(10),
   bottomRight: Radius.circular(10),
 );
+
+List<BoxShadow> CONTAINER_SHADOW = const [
+  BoxShadow(
+    color: Colors.black38,
+    spreadRadius: 1,
+    blurRadius: 2,
+    offset: Offset(0, 1),
+  ),
+];
 
 //Text style for Personal info widget
 TextStyle P_PERSONAL_INFO = const TextStyle(
