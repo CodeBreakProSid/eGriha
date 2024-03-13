@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../core/asset_url/asset_url.dart';
 import '../core/global_widgets/appbar_global.dart';
 import '../core/themes/theme_data.dart';
 import '../notification_details/screen_notification_details.dart';

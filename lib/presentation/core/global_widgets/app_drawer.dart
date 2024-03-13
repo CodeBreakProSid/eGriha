@@ -101,9 +101,15 @@ class AppDrawer extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               AppDrawerTile(
-                tileName: 'Manual',
+                tileName: 'Contacts',
                 icon: Icons.book,
-                tileKey: APP_TILE_VALUE['manual']!,
+                tileKey: APP_TILE_VALUE['contacts']!,
+              ),
+              const SizedBox(height: 10),
+              AppDrawerTile(
+                tileName: 'WebLink',
+                icon: Icons.insert_link_sharp,
+                tileKey: APP_TILE_VALUE['weblink']!,
               ),
               const SizedBox(height: 10),
               AppDrawerTile(

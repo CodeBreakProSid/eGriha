@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../infrastructure/core/module_services/auth_services.dart';
+import '../../contacts/screen_contacts.dart';
 import '../../login/screen_login.dart';
 import '../../main_page/screen_main_page.dart';
 import '../const/ui_const.dart';
@@ -37,6 +38,12 @@ Future<void> appDrawerNavigation(BuildContext context, int tileValue) async {
       );
       break;
     case 4:
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ScreenContacts(),
+        ),
+      );
       break;
     case 5:
       break;

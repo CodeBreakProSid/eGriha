@@ -48,6 +48,8 @@ const L_HEIGHT8 = SizedBox(height: 8);
 const L_HEIGHT10 = SizedBox(height: 10);
 const L_HEIGHT15 = SizedBox(height: 15);
 const L_HEIGHT20 = SizedBox(height: 20);
+const L_HEIGHT25 = SizedBox(height: 25);
+const L_HEIGHT30 = SizedBox(height: 30);
 const L_HEIGHT40 = SizedBox(height: 40);
 const L_HEIGHT100 = SizedBox(height: 100);
 

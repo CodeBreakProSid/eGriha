@@ -11,8 +11,8 @@ Map<String, int> APP_TILE_VALUE = {
   'home': 1,
   'profile': 2,
   'duties': 3,
-  'log': 4,
-  'manual': 5,
+  'contacts': 4,
+  'weblink': 5,
   'logout': 6,
 };
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../core/asset_url/asset_url.dart';
 import '../core/themes/theme_data.dart';
-import '../notification/widgets/notification_tile_content_widget.dart';
 import 'widgets/notification_details_widget.dart';
 import 'widgets/notification_image_view_widget.dart';
 
