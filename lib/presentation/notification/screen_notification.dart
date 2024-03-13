@@ -4,6 +4,7 @@ import '../core/asset_url/asset_url.dart';
 import '../core/global_widgets/appbar_global.dart';
 import '../core/themes/theme_data.dart';
 import '../notification_details/screen_notification_details.dart';
+import '../notification_details/widgets/risk_remark_title_widget.dart';
 import 'widgets/notification_tile_content_widget.dart';
 import 'widgets/notification_tile_image_widget.dart';
 
@@ -47,39 +48,47 @@ class ScreenNotification extends StatelessWidget {
               child: const Row(
                 children: [
                   //Notification tile image widget
-                  NotificationTileImageWidget(),
+                  Expanded(
+                    flex: 3,
+                    child: NotificationTileImageWidget(),
+                  ),
                   L_WIDTH10,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      NotificationTileContentWidget(
-                        icon: Icons.maps_home_work_rounded,
-                        iconSize: 18,
-                        title: "Swapnakoodu",
-                        titleSize: 16,
-                        titleWeight: FontWeight.bold,
-                      ),
-                      L_HEIGHT15,
-                      NotificationTileContentWidget(
-                        icon: Icons.location_on_sharp,
-                        iconSize: 15,
-                        title: "Vellayambalam, Thiruvananthapuram",
-                        titleSize: 12,
-                        titleWeight: FontWeight.normal,
-                      ),
-                      NotificationTileContentWidget(
-                        icon: Icons.calendar_month,
-                        iconSize: 15,
-                        title: "01-Jan-2024",
-                        titleSize: 12,
-                        titleWeight: FontWeight.normal,
-                      ),
-                      L_HEIGHT15,
-                      Text(
-                        "Construction process stopped due to residential\npeople involvement.",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ],
+                  Expanded(
+                    flex: 7,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        NotificationTileContentWidget(
+                          icon: Icons.maps_home_work_rounded,
+                          iconSize: 18,
+                          title: "Swapnakoodu",
+                          titleSize: 16,
+                          titleWeight: FontWeight.bold,
+                        ),
+                        L_HEIGHT15,
+                        NotificationTileContentWidget(
+                          icon: Icons.location_on_sharp,
+                          iconSize: 15,
+                          title: "Vellayambalam, Thiruvananthapuram",
+                          titleSize: 12,
+                          titleWeight: FontWeight.normal,
+                        ),
+                        NotificationTileContentWidget(
+                          icon: Icons.calendar_month,
+                          iconSize: 15,
+                          title: "01-Jan-2024",
+                          titleSize: 12,
+                          titleWeight: FontWeight.normal,
+                        ),
+                        L_HEIGHT15,
+                        RiskRemarkTitleWidget(
+                          title:
+                              "Construction process stopped due to residential people involvement.",
+                          titleSize: 12,
+                          titleWeight: FontWeight.normal,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

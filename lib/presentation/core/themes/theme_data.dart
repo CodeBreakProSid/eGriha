@@ -17,6 +17,7 @@ const APP_DRAWER_HEADER_COLOR = Colors.orangeAccent;
 //Login page
 const EdgeInsets LOGIN_PAGE_PADDING20 = EdgeInsets.all(20);
 const EdgeInsets PADDING5 = EdgeInsets.all(5);
+const EdgeInsets PADDING8 = EdgeInsets.all(8);
 
 //Height & Width
 //Login Page
@@ -43,6 +44,7 @@ Decoration LOGIN_PAGE_CONTAINER_DECOR = BoxDecoration(
 
 //Screen Spacing
 const L_HEIGHT5 = SizedBox(height: 5);
+const L_HEIGHT8 = SizedBox(height: 8);
 const L_HEIGHT10 = SizedBox(height: 10);
 const L_HEIGHT15 = SizedBox(height: 15);
 const L_HEIGHT20 = SizedBox(height: 20);
@@ -148,4 +150,9 @@ TextStyle P_BOTTOMSHEET_TEXT_STYLE = const TextStyle(
 
 const Widget CIRCULAR_PROGRESSING_INDICATOR = CircularProgressIndicator(
   strokeWidth: 2,
+);
+
+const Widget DIVIDER_WIDGET = Divider(
+  thickness: 2,
+  color: Color.fromARGB(255, 214, 214, 214),
 );
