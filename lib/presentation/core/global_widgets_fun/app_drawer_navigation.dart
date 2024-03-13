@@ -6,6 +6,7 @@ import '../../../infrastructure/core/module_services/auth_services.dart';
 import '../../contacts/screen_contacts.dart';
 import '../../login/screen_login.dart';
 import '../../main_page/screen_main_page.dart';
+import '../../weblink/screen_weblink.dart';
 import '../const/ui_const.dart';
 
 Future<void> appDrawerNavigation(BuildContext context, int tileValue) async {
@@ -46,6 +47,12 @@ Future<void> appDrawerNavigation(BuildContext context, int tileValue) async {
       );
       break;
     case 5:
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ScreenWeblink(),
+        ),
+      );
       break;
     case 6:
       //Need to call token deleting function

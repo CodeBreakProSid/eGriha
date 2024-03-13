@@ -76,7 +76,7 @@ class ScreenContacts extends StatelessWidget {
                   ),
                 ),
               ),
-              L_HEIGHT10,
+              L_HEIGHT15,
               Flexible(
                 child: Container(
                   //padding: const EdgeInsets.only(left: 15),
