@@ -24,6 +24,7 @@ class ScreenNotification extends StatelessWidget {
       ),
       //App body definition
       body: ListView.separated(
+        physics: const BouncingScrollPhysics(),
         padding: PADDING5,
         itemBuilder: (BuildContext ctx, int index) {
           return GestureDetector(

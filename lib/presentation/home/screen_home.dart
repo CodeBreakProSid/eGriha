@@ -2,18 +2,14 @@
 
 import 'dart:async';
 
-import 'package:egraha_app/presentation/core/asset_url/asset_url.dart';
 import 'package:egraha_app/presentation/core/themes/theme_data.dart';
-import 'package:egraha_app/presentation/notification_details/widgets/risk_remark_title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../../application/profile/profile_bloc.dart';
 import '../core/global_widgets/app_drawer.dart';
 import '../core/global_widgets/appbar_global.dart';
 import '../core/global_widgets/appbar_icon_widget.dart';
-import '../notification/widgets/notification_tile_content_widget.dart';
 import 'widgets/assigned_project_list_widget.dart';
 import 'widgets/home_heading_widget.dart';
 import 'widgets/home_image_poster_widget.dart';
