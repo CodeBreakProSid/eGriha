@@ -16,6 +16,15 @@ Map<String, int> APP_TILE_VALUE = {
   'logout': 6,
 };
 
+Map<String, int> HOME_QUICK_LAUNCH_VALUE = {
+  'dpr': 1,
+  'dlr': 2,
+  'risk': 3,
+  'web': 4,
+  'contact': 5,
+  'manual': 6,
+};
+
 Map<String, int> PROFILE_FIELD = {
   'name': 1,
   'gender': 2,
