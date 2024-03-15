@@ -6,6 +6,7 @@ import '../core/themes/theme_data.dart';
 import '../notification/widgets/notification_tile_content_widget.dart';
 import '../notification/widgets/notification_tile_image_widget.dart';
 import '../notification_details/widgets/risk_remark_title_widget.dart';
+import '../project_details/screen_project_details.dart';
 
 class ScreenProject extends StatelessWidget {
   const ScreenProject({super.key});
@@ -28,12 +29,12 @@ class ScreenProject extends StatelessWidget {
           return GestureDetector(
             //Calling detailed notification view
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => const ScreenNotificationDetails(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ScreenProjectDetails(),
+                ),
+              );
             },
             //Container for single notification tile
             child: Container(
