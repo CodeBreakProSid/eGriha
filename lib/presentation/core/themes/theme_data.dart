@@ -76,7 +76,8 @@ TextStyle LB_TEXT_STYLE = const TextStyle(
 
 //Padding
 //App Drawer Icon
-const EdgeInsets LIST_ICON_TEXT_PADDING = EdgeInsets.only(left: 20);
+const EdgeInsets LIST_ICON_TEXT_PADDING20 = EdgeInsets.only(left: 20);
+const EdgeInsets LIST_ICON_TEXT_PADDING15 = EdgeInsets.only(left: 15);
 
 //Text Style
 //App drawer

@@ -19,14 +19,14 @@ class AppDrawerTile extends StatelessWidget {
     return ListTile(
       // enabled: Get.currentRoute != Routes.OFFICER_HOME,
       title: Padding(
-        padding: LIST_ICON_TEXT_PADDING,
+        padding: LIST_ICON_TEXT_PADDING20,
         child: Text(
           tileName,
           style: APP_DRAWER_TEXT_STYLE,
         ),
       ),
       leading: Padding(
-        padding: LIST_ICON_TEXT_PADDING,
+        padding: LIST_ICON_TEXT_PADDING20,
         child: Icon(
           icon,
           size: 30,
