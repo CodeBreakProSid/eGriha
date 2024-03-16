@@ -1,3 +1,4 @@
+import 'package:egraha_app/presentation/project_details/screen_project_details.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/asset_url/asset_url.dart';
@@ -30,6 +31,16 @@ class AssignedProjectListWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ScreenProjectDetails(),
+                      ),
+                    );
+                  },
+                ),
               ),
               Text(
                 "Project $index",
@@ -43,7 +54,7 @@ class AssignedProjectListWidget extends StatelessWidget {
           );
         },
         separatorBuilder: (BuildContext ctx, int index) {
-          return const SizedBox(width: 5);
+          return L_WIDTH5;
         },
         itemCount: 10,
       ),

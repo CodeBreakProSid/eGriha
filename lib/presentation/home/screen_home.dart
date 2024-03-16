@@ -74,31 +74,33 @@ class ScreenHome extends StatelessWidget {
           L_HEIGHT10,
           //Top quick access widget
           const QuickAccessWidget(),
-          L_HEIGHT10,
+          L_HEIGHT5,
           //Home image poster widget
           HomeImagePosterWidget(
             imageIndexChangeNotifier: imageIndexChangeNotifier,
             images: images,
           ),
-          L_HEIGHT10,
+          L_HEIGHT5,
           //Heading widget
           const HomeHeadingWidget(
             headingTile: 'Last Updated',
             otherTile: 'See Info',
+            type: 0,
           ),
-          L_HEIGHT10,
+          L_HEIGHT5,
           //Last updated project widget
           const LastUpdatedProjectWidget(),
-          L_HEIGHT10,
+          L_HEIGHT5,
           //Heading widget
           const HomeHeadingWidget(
             headingTile: 'Assigned Projects',
             otherTile: 'See All',
+            type: 1,
           ),
-          L_HEIGHT10,
+          L_HEIGHT5,
           //Assigned project list widget
           const AssignedProjectListWidget(),
-          L_HEIGHT10,
+          L_HEIGHT5,
         ],
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/themes/theme_data.dart';
 import '../../notification/widgets/notification_tile_content_widget.dart';
 import '../../notification_details/widgets/risk_remark_title_widget.dart';
+import '../../project_sites/screen_project_sites.dart';
 
 class ProjectDetailsWidget extends StatelessWidget {
   const ProjectDetailsWidget({
@@ -133,7 +134,15 @@ class ProjectDetailsWidget extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ScreenProjectSites(),
+                                        ),
+                                      );
+                                    },
                                     child: const Text("32 Nos")),
                               )
                             ],
