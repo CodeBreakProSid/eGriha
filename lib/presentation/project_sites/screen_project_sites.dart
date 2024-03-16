@@ -4,6 +4,7 @@ import '../core/global_widgets/appbar_global.dart';
 import '../core/themes/theme_data.dart';
 import '../notification/widgets/notification_tile_content_widget.dart';
 import '../notification/widgets/notification_tile_image_widget.dart';
+import '../project_site_details/screen_project_site_details.dart';
 
 class ScreenProjectSites extends StatelessWidget {
   const ScreenProjectSites({super.key});
@@ -25,12 +26,14 @@ class ScreenProjectSites extends StatelessWidget {
           return GestureDetector(
             //Calling detailed notification view
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => const ScreenProjectDetails(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ScreenProjectSiteDetails(
+                    projectName: "Swapnakoodu Site ${index + 1}",
+                  ),
+                ),
+              );
             },
             //Container for single notification tile
             child: Container(
@@ -90,12 +93,6 @@ class ScreenProjectSites extends StatelessWidget {
                           titleSize: 12,
                           titleWeight: FontWeight.normal,
                         ),
-                        // const RiskRemarkTitleWidget(
-                        //   title:
-                        //       "പാവപ്പെട്ട ജനങ്ങൾക്ക് വേണ്ടി സർക്കാർ നടത്തുന്ന ഒരു ഭവന നിർമ്മാണ പദ്ധതി",
-                        //   titleSize: 12,
-                        //   titleWeight: FontWeight.normal,
-                        // ),
                       ],
                     ),
                   ),
