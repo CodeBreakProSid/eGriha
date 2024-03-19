@@ -18,4 +18,6 @@ class ApiEndPoints {
   // Profile Module API calls*
   static const String OFFICER_PROFILE = "accounts/api/user_profile/";
   static const String UPDATE_PROFILE = "accounts/api/user_profile/";
+
+  //Home Module API calls
 }

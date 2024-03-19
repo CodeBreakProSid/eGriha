@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../core/global_widgets/appbar_global.dart';
 import '../core/themes/theme_data.dart';
+import '../dlr_form/screen_dlr_form.dart';
 import '../dpr_form/screen_dpr_form.dart';
 import '../notification/widgets/notification_tile_content_widget.dart';
 import '../notification/widgets/notification_tile_image_widget.dart';
@@ -147,46 +148,61 @@ class ScreenProjectSiteDetails extends StatelessWidget {
                         ),
                         Expanded(
                           flex: 30,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage("assets/labourdlr.png"),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ScreenDLRForm(),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage("assets/labourdlr.png"),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              L_HEIGHT5,
-                              const RiskRemarkTitleWidget(
-                                title: "DLR",
-                                titleSize: 12,
-                                titleWeight: FontWeight.bold,
-                              ),
-                            ],
+                                L_HEIGHT5,
+                                const RiskRemarkTitleWidget(
+                                  title: "DLR",
+                                  titleSize: 12,
+                                  titleWeight: FontWeight.bold,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Expanded(
                           flex: 30,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage("assets/risk.png"),
+                          child: GestureDetector(
+                            onTap: () {
+                              //TODO for Risk page
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage("assets/risk.png"),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              L_HEIGHT5,
-                              const RiskRemarkTitleWidget(
-                                title: "RISK",
-                                titleSize: 12,
-                                titleWeight: FontWeight.bold,
-                              ),
-                            ],
+                                L_HEIGHT5,
+                                const RiskRemarkTitleWidget(
+                                  title: "RISK",
+                                  titleSize: 12,
+                                  titleWeight: FontWeight.bold,
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -290,21 +306,23 @@ class ScreenProjectSiteDetails extends StatelessWidget {
                                     trailing: IconButton(
                                       icon: const Icon(Icons.arrow_forward),
                                       onPressed: () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) => DprDetail(),
-                                        //   ),
-                                        // );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ScreenDLRForm(),
+                                          ),
+                                        );
                                       },
                                     ),
                                     onTap: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) => DprDetail(),
-                                      //   ),
-                                      // );
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ScreenDLRForm(),
+                                        ),
+                                      );
                                     },
                                   ),
                                 );
