@@ -110,7 +110,7 @@ class NotificationDetailsWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: NotificationTileContentWidget(
                                   icon: Icons.calendar_month,
                                   iconSize: 15,
@@ -178,7 +178,7 @@ class NotificationDetailsWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: NotificationTileContentWidget(
                                   icon: Icons.calendar_month,
                                   iconSize: 12,
@@ -217,7 +217,7 @@ class NotificationDetailsWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: NotificationTileContentWidget(
                                   icon: Icons.calendar_month,
                                   iconSize: 15,
@@ -256,7 +256,7 @@ class NotificationDetailsWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: NotificationTileContentWidget(
                                   icon: Icons.calendar_month,
                                   iconSize: 15,
@@ -295,7 +295,7 @@ class NotificationDetailsWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: NotificationTileContentWidget(
                                   icon: Icons.calendar_month,
                                   iconSize: 15,

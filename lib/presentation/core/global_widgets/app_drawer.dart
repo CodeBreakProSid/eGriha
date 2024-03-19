@@ -120,33 +120,31 @@ class AppDrawer extends StatelessWidget {
             icon: Icons.power_settings_new_rounded,
             tileKey: APP_TILE_VALUE['logout']!,
           ),
-          Expanded(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        radius: 40,
-                        child: Image.asset(
-                          AssetUrls.KSHB_LOGO,
-                        ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 40,
+                      child: Image.asset(
+                        AssetUrls.KSHB_LOGO,
                       ),
                     ),
-                    const Text(
-                      'KERALA STATE HOUSING BOARD',
-                      style: TextStyle(
-                        fontFamily: 'Cormorant',
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
+                  ),
+                  const Text(
+                    'KERALA STATE HOUSING BOARD',
+                    style: TextStyle(
+                      fontFamily: 'Cormorant',
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

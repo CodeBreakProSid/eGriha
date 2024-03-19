@@ -31,7 +31,7 @@ class ScreenProjectSiteDetails extends StatelessWidget {
           children: [
             L_HEIGHT5,
             Expanded(
-              flex: 15,
+              flex: 20,
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Container(
@@ -101,7 +101,7 @@ class ScreenProjectSiteDetails extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 12,
+              flex: 15,
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Container(

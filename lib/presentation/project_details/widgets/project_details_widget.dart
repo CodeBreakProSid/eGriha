@@ -174,7 +174,7 @@ class ProjectDetailsWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: NotificationTileContentWidget(
                                   icon: Icons.calendar_month,
                                   iconSize: 15,
@@ -212,7 +212,7 @@ class ProjectDetailsWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: NotificationTileContentWidget(
                                   icon: Icons.calendar_month,
                                   iconSize: 15,

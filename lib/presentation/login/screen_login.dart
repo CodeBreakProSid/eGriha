@@ -42,7 +42,8 @@ class ScreenLogin extends StatelessWidget {
               key: loginFormKey,
               child: Container(
                 decoration: LOGIN_PAGE_CONTAINER_DECOR,
-                child: Column(
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     Padding(
                       padding: LOGIN_PAGE_PADDING20,
@@ -67,7 +68,7 @@ class ScreenLogin extends StatelessWidget {
                             loginData: snapshot.data,
                           ),
                           //Screen height for seperation
-                          L_HEIGHT100,
+                          L_HEIGHT40,
                           //Keltron logo widget
                           const KeltronLogoWidget(),
                         ],
